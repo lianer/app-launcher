@@ -1,0 +1,16 @@
+{
+  "name": "app-launcher",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "lianer",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^17.0.1",
+    "semantic-release": "^19.0.2"
+  }
+}
