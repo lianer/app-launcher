@@ -21,6 +21,9 @@ jobs:
         with:
           node-version: 16
           cache: 'npm'
+          
+      - name: echo args
+        run: echo ${{ secrets.GH_TOKEN }}
 
       - run: npm ci
 
