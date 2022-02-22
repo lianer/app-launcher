@@ -2,14 +2,18 @@
   "name": "app-launcher",
   "version": "1.0.0",
   "description": "",
+  "type": "module",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
+    "build": "echo \"build electron\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "lianer",
   "license": "ISC",
   "devDependencies": {
+    "@semantic-release/changelog": "^6.0.1",
+    "@semantic-release/git": "^10.0.1",
     "electron": "^17.0.1",
     "semantic-release": "^19.0.2"
   }
