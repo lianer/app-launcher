@@ -22,11 +22,10 @@ jobs:
           node-version: 16
           cache: 'npm'
 
-      - name: npm run
-        run: |
-          npm ci
-          npm run build
-          npx semantic-release
+      - run: npm ci
 
-      - env:
+      - run: npm run build
+
+      - run: npx semantic-release
+        env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
