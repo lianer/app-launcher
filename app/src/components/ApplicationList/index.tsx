@@ -1,10 +1,12 @@
 import { AppInfo } from '../../interface';
 import styles from './index.module.css';
 
-export function ApplicationList({ list }: { list: AppInfo[] }) {
+// React.FC 扩展了 children 属性
+export const ApplicationList: React.FC<{ list: AppInfo[] }> = (props) => {
   return (
     <div>
-      {list.map((item) => {
+      <div>{props.children}</div>
+      {props.list.map((item) => {
         return (
           <div className={styles.item} key={item.appName}>
             <img className={styles.img} src={item.icon} alt={item.appName} />
@@ -14,4 +16,4 @@ export function ApplicationList({ list }: { list: AppInfo[] }) {
       })}
     </div>
   );
-}
+};

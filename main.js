@@ -1,10 +1,18 @@
-import { app, BrowserWindow } from 'electron';
+const path = require('path');
+const { app, BrowserWindow, ipcMain } = require('electron');
+
+const resolve = (...args) => path.resolve(__dirname, ...args);
 
 function createWindow() {
   const win = new BrowserWindow({
     width: 800,
     height: 600,
+    webPreferences: {
+      preload: resolve('preload.js'),
+    },
   });
+
+  win.webContents.openDevTools();
 
   win.loadURL('http://localhost:9000');
 }
