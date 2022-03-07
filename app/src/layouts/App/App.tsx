@@ -8,13 +8,11 @@ const links = linksRaw as Link[];
 
 // links.forEach((link) => (link.icon = '/qq-music.png'));
 
-function App() {
+export const App: React.FC = () => {
   return (
     <div className={s.App}>
       <MenuBar />
       <Content list={links} />
     </div>
   );
-}
-
-export default App;
+};
