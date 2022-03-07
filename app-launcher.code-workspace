@@ -1,0 +1,13 @@
+{
+  "folders": [
+    {
+      "name": "electron",
+      "path": "electron"
+    },
+    {
+      "name": "app",
+      "path": "app"
+    }
+  ],
+  "settings": {}
+}

@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "dev": "run-p start tcm",
     "start": "cross-env PORT=9000 react-scripts start",
     "tcm": "tcm src -w -p '**/*.module.css'",
     "build": "react-scripts build",
@@ -10,6 +11,11 @@
     "eject": "react-scripts eject"
   },
   "dependencies": {
+    "@emotion/react": "^11.8.1",
+    "@emotion/styled": "^11.8.1",
+    "@fontsource/roboto": "^4.5.3",
+    "@mui/icons-material": "^5.4.4",
+    "@mui/material": "^5.4.4",
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.3",
     "@testing-library/user-event": "^13.5.0",
@@ -17,6 +23,8 @@
     "@types/node": "^16.11.25",
     "@types/react": "^17.0.39",
     "@types/react-dom": "^17.0.11",
+    "mobx": "^6.4.2",
+    "mobx-react": "^7.3.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "5.0.0",
@@ -43,7 +51,10 @@
   },
   "devDependencies": {
     "cross-env": "^7.0.3",
+    "electron": "^17.0.1",
     "less": "^4.1.2",
+    "npm-run-all": "^4.1.5",
+    "type-fest": "^2.12.0",
     "typed-css-modules": "^0.7.0"
   }
 }

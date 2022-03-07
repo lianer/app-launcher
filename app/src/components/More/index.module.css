@@ -1,0 +1,15 @@
+.More {
+  width: 2em;
+  height: 2em;
+  text-align: center;
+  line-height: 2em;
+  margin-left: 40px;
+  margin-right: 20px;
+  border-radius: 1em;
+  font-size: var(--MenuBarFontSize);
+  cursor: pointer;
+}
+
+.More:hover {
+  /* background: var(--MenuBarHoverBackground); */
+}

@@ -1,32 +1,19 @@
 import './assets/normalize.css';
-import './App.css';
-import { ApplicationList } from './components/ApplicationList';
-import { AppInfo } from './interface';
+import { MenuBar } from './components/MenuBar';
+import { Content } from './components/Content';
+import linksRaw from './data/links.json';
+import { Link } from './interface';
+import s from './App.module.css';
+
+const links = linksRaw as Link[];
+
+// links.forEach((link) => (link.icon = '/qq-music.png'));
 
 function App() {
-  const appInfoList: AppInfo[] = [
-    {
-      appName: 'QQ 音乐',
-      icon: '/qq-music.png',
-    },
-    {
-      appName: '微信',
-      icon: '/wechat.png',
-    },
-    {
-      appName: '支付宝',
-      icon: '/alipay.png',
-    },
-  ];
-
-  // window.electron.ipcRenderer.send('get-applications');
-  // window.electron.ipcRenderer.on('get-applications', (event, applications) => {
-  //   console.log(applications);
-  // });
-
   return (
-    <div className="App">
-      <ApplicationList list={appInfoList} />
+    <div className={s.App}>
+      <MenuBar />
+      <Content list={links} />
     </div>
   );
 }

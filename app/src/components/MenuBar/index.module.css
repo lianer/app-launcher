@@ -1,0 +1,65 @@
+.MenuBar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  padding: 20px 0;
+  user-select: none;
+  --MenuBarFontSize: 14px;
+  --MenuBarHoverBackground: #ddd;
+}
+
+.Space {
+  flex: 1;
+}
+
+.Search {
+  width: 2em;
+  height: 2em;
+  text-align: center;
+  line-height: 2em;
+  margin-right: 40px;
+  border-radius: 1em;
+  font-size: var(--MenuBarFontSize);
+  cursor: pointer;
+}
+
+.Search:hover {
+  background: var(--MenuBarHoverBackground);
+}
+
+.Groups {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 30px;
+}
+
+.Group {
+  margin: 0 4px;
+  padding: 4px 12px;
+  list-style: none;
+  border-radius: 6px;
+  font-size: var(--MenuBarFontSize);
+  cursor: pointer;
+}
+
+.Group.Active,
+.Group:hover {
+  background: var(--MenuBarHoverBackground);
+}
+
+.AddGroupButton {
+  width: 2em;
+  height: 2em;
+  text-align: center;
+  line-height: 2em;
+  margin-left: 40px;
+  border-radius: 1em;
+  font-size: var(--MenuBarFontSize);
+  cursor: pointer;
+}
+
+.AddGroupButton:hover {
+  background: var(--MenuBarHoverBackground);
+}
