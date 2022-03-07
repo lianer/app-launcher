@@ -1,7 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import App from './layouts/App/App';
 import reportWebVitals from './reportWebVitals';
+
+// basic css
+import './assets/normalize.css';
 import './assets/root.css';
 
 // roboto for mui

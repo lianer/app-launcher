@@ -2,9 +2,9 @@ import React from 'react';
 import { IconButton, Menu, MenuItem, Box, Slider } from '@mui/material';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import SettingsIcon from '@mui/icons-material/Settings';
-import s from './index.module.css';
+import s from './More.module.css';
 import { observer } from 'mobx-react';
-import { iconSize } from '../../mobx/IconSize';
+import { iconSize } from '../../state/IconSize';
 
 const ITEM_HEIGHT = 80;
 

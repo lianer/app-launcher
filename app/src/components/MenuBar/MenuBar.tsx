@@ -1,6 +1,6 @@
 import { Icon } from '../Icon';
 import { More } from '../More';
-import s from './index.module.css';
+import s from './MenuBar.module.css';
 
 const Space: React.FC = function () {
   return <div className={s.Space}></div>;

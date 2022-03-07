@@ -1,7 +1,7 @@
 import { observer } from 'mobx-react';
 import { Link } from '../../interface';
-import { iconSize } from '../../mobx/IconSize';
-import s from './index.module.css';
+import { iconSize } from '../../state/IconSize';
+import s from './Content.module.css';
 
 // React.FC 扩展了 children 属性
 export const Content: React.FC<{ list: Link[] }> = observer((props) => {

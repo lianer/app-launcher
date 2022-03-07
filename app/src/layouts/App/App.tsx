@@ -1,8 +1,7 @@
-import './assets/normalize.css';
-import { MenuBar } from './components/MenuBar';
-import { Content } from './components/Content';
-import linksRaw from './data/links.json';
-import { Link } from './interface';
+import { MenuBar } from '../../components/MenuBar';
+import { Content } from '../../components/Content';
+import linksRaw from '../../data/links.json';
+import { Link } from '../../interface';
 import s from './App.module.css';
 
 const links = linksRaw as Link[];

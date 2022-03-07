@@ -1,4 +1,4 @@
-import s from './index.module.css';
+import s from './Icon.module.css';
 
 export const Icon: React.FC<{ name: string }> = function (props) {
   return (

@@ -1,12 +1,12 @@
 {
   "folders": [
     {
-      "name": "electron",
-      "path": "electron"
-    },
-    {
       "name": "app",
       "path": "app"
+    },
+    {
+      "name": "electron",
+      "path": "electron"
     }
   ],
   "settings": {}
