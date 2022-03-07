@@ -46,10 +46,17 @@ export const More: React.FC = observer(() => {
         }}
       >
         <MenuItem>
+          <SettingsIcon />
+          <span>About</span>
+        </MenuItem>
+        <MenuItem>
           <Box width={200 - 32}>
             <Slider
               size="small"
               value={iconSize.size}
+              max={164}
+              min={44}
+              marks={[{ label: '', value: 64 }]}
               aria-label="Small"
               valueLabelDisplay="auto"
               onChange={(ev, val) => {
