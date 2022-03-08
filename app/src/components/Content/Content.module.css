@@ -1,30 +1,21 @@
 .Content {
   flex: 1;
-  display: grid;
-  /* display: flex; */
-  /* flex-direction: row; */
-  /* flex-wrap: wrap; */
-  justify-content: space-between;
-  /* grid-template-columns: repeat(auto-fill, 100px); */
-  /* grid-gap: 10px; */
-  align-items: center;
   padding: 20px 80px;
   overflow-y: auto;
-  will-change: auto;
 }
 
-.Content::after {
-  content: '';
-  flex: auto;
+.Scroller {
+  display: grid;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .Link {
   display: flex;
   flex-direction: column;
+  align-items: center;
   flex-grow: 0;
   flex-shrink: 0;
-  /* margin: 10px; */
-  /* padding: 20px; */
   cursor: pointer;
   user-select: none;
 }
@@ -41,6 +32,7 @@
 
 .Title {
   font-size: 12px;
+  line-height: 20px;
   text-align: center;
   white-space: nowrap;
   text-overflow: ellipsis;

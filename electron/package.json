@@ -17,10 +17,12 @@
     "@semantic-release/github": "^8.0.2",
     "@semantic-release/release-notes-generator": "^10.0.3",
     "@types/glob": "^7.2.0",
+    "@types/xml2js": "^0.4.9",
     "electron": "^17.0.1",
     "semantic-release": "^19.0.2"
   },
   "dependencies": {
-    "glob": "^7.2.0"
+    "glob": "^7.2.0",
+    "xml2js": "^0.4.23"
   }
 }

@@ -8,6 +8,8 @@ import glob from 'glob';
 const platform = os.platform();
 const exec = util.promisify(child_process.exec);
 const exists = util.promisify(fs.exists);
+// const unicodePattern = /[^\u0000-\u00ff]/;
+const unicodePattern = /\\u/;
 
 type App = { name?: string; dest: string; icon?: string };
 
@@ -67,6 +69,13 @@ export const getApplicationIcon = async function (
       // iconName 有带和不带 .icns 后缀的两种情况
       iconName = iconName.endsWith('.icns') ? iconName : iconName + '.icns';
 
+      // iconName 存在 unicode 编码的情况
+      // https://developer.apple.com/forums/thread/682103
+      // https://stackoverflow.com/questions/147824/how-to-find-whether-a-particular-string-has-unicode-characters-esp-double-byte
+      if (unicodePattern.test(iconName)) {
+        iconName = JSON.parse(`"${iconName}"`);
+      }
+
       return path.resolve(dest, 'Contents/Resources/', iconName);
     } else {
       return '';
@@ -89,4 +98,11 @@ export const getAllApplicationIcons = function (apps: App[]) {
 // 解析应用名称
 export const getApplicationName = function (dest: App['dest']) {
   return path.basename(dest).slice(0, -4);
+};
+
+// 将 icns 转换为 png
+export const convertIcnsToPng = async function (src: string, out: string) {
+  // 需要确保目标目录存在，否则会报错
+  // sips -s format png /Applications/XMind.app/Contents/Resources/XMind.icns --out /Users/lianer/dev/repos/app-launcher/electron/assets/icons/XMind.png
+  return await exec(`sips -s format png "${src}" --out "${out}"`);
 };
