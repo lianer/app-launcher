@@ -1,5 +1,8 @@
+import { observer } from 'mobx-react';
+import { settings } from '../../state/Settings';
 import { Icon } from '../Icon';
 import s from './Groups.module.css';
+import classnames from 'classnames';
 
 const AddGroupBtton: React.FC = function () {
   return (
@@ -9,14 +12,24 @@ const AddGroupBtton: React.FC = function () {
   );
 };
 
-export const Groups: React.FC = function () {
+export const Groups: React.FC = observer(function () {
+  const { activatedGroup, groups } = settings;
+  const id = activatedGroup?.id;
+
   return (
     <div className={s.Groups}>
-      <div className={s.Group}>收藏</div>
-      <div className={s.Group}>应用程序</div>
-      <div className={s.Group}>文件</div>
-      <div className={s.Group}>Movies</div>
+      {groups.map((group) => (
+        <div
+          className={classnames(s.Group, {
+            [s.Active]: group.id === id,
+          })}
+          key={group.id}
+          onClick={() => settings.activeGroup(group.id)}
+        >
+          {group.name}
+        </div>
+      ))}
       <AddGroupBtton />
     </div>
   );
-};
+});

@@ -13,6 +13,9 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 
+// init state
+import './init-state.ts';
+
 ReactDOM.render(
   <React.StrictMode>
     <App />

@@ -11,7 +11,7 @@ const exists = util.promisify(fs.exists);
 // const unicodePattern = /[^\u0000-\u00ff]/;
 const unicodePattern = /\\u/;
 
-type App = { name?: string; dest: string; icon?: string };
+export type App = { name?: string; dest: string; icon?: string };
 
 const isString = function (dest: string | null): dest is string {
   return dest !== null;

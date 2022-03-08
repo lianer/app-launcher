@@ -4,7 +4,7 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import SettingsIcon from '@mui/icons-material/Settings';
 import s from './More.module.css';
 import { observer } from 'mobx-react';
-import { iconSize } from '../../state/IconSize';
+import { settings } from '../../state/Settings';
 
 const ITEM_HEIGHT = 80;
 
@@ -22,7 +22,6 @@ export const More: React.FC = observer(() => {
 
   return (
     <div className={s.More}>
-      {/* <Icon name="icon-more"></Icon> */}
       <IconButton
         aria-label="more"
         id="long-button"
@@ -53,14 +52,14 @@ export const More: React.FC = observer(() => {
           <Box width={200 - 32}>
             <Slider
               size="small"
-              value={iconSize.size}
+              value={settings.iconSize}
               max={164}
               min={44}
               marks={[{ label: '', value: 64 }]}
               aria-label="Small"
               valueLabelDisplay="auto"
               onChange={(ev, val) => {
-                iconSize.setSize(val as number);
+                settings.setIconSize(val as number);
               }}
             />
           </Box>

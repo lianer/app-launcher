@@ -4,6 +4,7 @@
   "description": "",
   "main": "main.js",
   "scripts": {
+    "dev": "npm start",
     "start": "electron .",
     "build": "echo \"build electron\"",
     "test": "echo \"Error: no test specified\" && exit 1"

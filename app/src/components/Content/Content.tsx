@@ -1,11 +1,11 @@
 import { observer } from 'mobx-react';
 import { Link } from '../../interface';
-import { iconSize } from '../../state/IconSize';
+import { settings } from '../../state/Settings';
 import s from './Content.module.css';
 
 // React.FC 扩展了 children 属性
-export const Content: React.FC<{ list: Link[] }> = observer((props) => {
-  const size = iconSize.size;
+export const Content: React.FC = observer(() => {
+  const size = settings.iconSize;
 
   const marginLR = size / 10;
   const marginTB = size / 10;
@@ -14,6 +14,17 @@ export const Content: React.FC<{ list: Link[] }> = observer((props) => {
 
   const titleHeight = size / 2;
   const titleFontSize = titleHeight * (3 / 8); // 字体大小为标题高度的 3/8，在图标为 64px 的情况下，刚好获得 12px 的字号
+
+  const links =
+    settings.groups.find((group) => group.id === settings.activatedGroup?.id)
+      ?.links || [];
+
+  // console.log(links[0]);
+  // (window as any).temp1 = links[0]
+
+  const openLink = (link: Link) => {
+    window.electron?.openLink(link.dest);
+  };
 
   return (
     <div className={s.Content}>
@@ -30,7 +41,7 @@ export const Content: React.FC<{ list: Link[] }> = observer((props) => {
           gridRowGap: `${marginTB}px`,
         }}
       >
-        {props.list.map((link) => (
+        {links.map((link) => (
           <div
             className={s.Link}
             key={link.name}
@@ -40,6 +51,7 @@ export const Content: React.FC<{ list: Link[] }> = observer((props) => {
               paddingTop: paddingTB,
               paddingBottom: paddingTB,
             }}
+            onClick={() => openLink(link)}
           >
             <div
               className={s.Icon}

@@ -6,6 +6,7 @@ import child_process from 'child_process';
 const exec = util.promisify(child_process.exec);
 
 import {
+  App,
   convertIcnsToPng,
   getAllApplicationIcons,
   getApplicationIcon,
@@ -90,9 +91,43 @@ const generateIcon = async function () {
   );
   console.log('All ICNS ICON have been coverted to PNG');
 
+  const generatedApps = apps as Required<App>[];
+
+  // 补充 store 对象
+  const data = {
+    iconSize: 100,
+    activatedGroup: null,
+    groups: [
+      {
+        id: 0,
+        name: '收藏',
+        links: generatedApps.filter((app) =>
+          ['Authy Desktop', 'Google Chrome', 'Kindle', 'Safari'].includes(
+            app.name
+          )
+        ),
+      },
+      {
+        id: 1,
+        name: '应用程序',
+        links: apps,
+      },
+      {
+        id: 2,
+        name: 'Movies',
+        links: [],
+      },
+      {
+        id: 3,
+        name: 'Music',
+        links: [],
+      },
+    ],
+  };
+
   // 导出 json
-  const out = path.resolve(__dirname, '../../app/src/data/links.json');
-  fs.writeFileSync(out, JSON.stringify(apps, null, 2));
+  const out = path.resolve(__dirname, '../../app/src/data/data.json');
+  fs.writeFileSync(out, JSON.stringify(data, null, 2));
 
   console.log(`The ${out} is generated`);
 };
