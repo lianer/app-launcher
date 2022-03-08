@@ -1,5 +1,6 @@
 import { observer } from 'mobx-react';
 import { Link } from '../../interface';
+import { filter } from '../../state/Filter';
 import { settings } from '../../state/Settings';
 import s from './Content.module.css';
 
@@ -15,9 +16,26 @@ export const Content: React.FC = observer(() => {
   const titleHeight = size / 2;
   const titleFontSize = titleHeight * (3 / 8); // 字体大小为标题高度的 3/8，在图标为 64px 的情况下，刚好获得 12px 的字号
 
-  const links =
+  // filter
+  let links =
     settings.groups.find((group) => group.id === settings.activatedGroup?.id)
       ?.links || [];
+  const keywords = filter.keywords;
+  if (keywords.trim() !== '') {
+    keywords.split('').forEach((keyword) => {
+      links = links.filter((link) => {
+        // 英文不区分大小写
+        if (/[a-zA-Z]/.test(keyword)) {
+          return (
+            link.name.includes(keyword.toUpperCase()) ||
+            link.name.includes(keyword.toLowerCase())
+          );
+        }
+        // 其他字符精确匹配
+        return link.name.includes(keyword);
+      });
+    });
+  }
 
   // console.log(links[0]);
   // (window as any).temp1 = links[0]

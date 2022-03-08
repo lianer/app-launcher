@@ -1,13 +1,22 @@
 import { observer } from 'mobx-react';
 import { settings } from '../../state/Settings';
-import { Icon } from '../Icon';
 import s from './Groups.module.css';
 import classnames from 'classnames';
+import AddIcon from '@mui/icons-material/Add';
+import { useState } from 'react';
+import { IconButton } from '@mui/material';
 
 const AddGroupBtton: React.FC = function () {
+  const [open, toggleOpen] = useState(false);
+  const handleClick = () => {
+    toggleOpen(!open);
+  };
+
   return (
     <div className={s.AddGroupButton}>
-      <Icon name="icon-add"></Icon>
+      <IconButton onClick={handleClick}>
+        <AddIcon fontSize="small"></AddIcon>
+      </IconButton>
     </div>
   );
 };

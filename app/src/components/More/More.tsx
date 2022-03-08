@@ -5,6 +5,7 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import s from './More.module.css';
 import { observer } from 'mobx-react';
 import { settings } from '../../state/Settings';
+import classNames from 'classnames';
 
 const ITEM_HEIGHT = 80;
 
@@ -21,16 +22,9 @@ export const More: React.FC = observer(() => {
   };
 
   return (
-    <div className={s.More}>
-      <IconButton
-        aria-label="more"
-        id="long-button"
-        aria-controls={open ? 'long-menu' : undefined}
-        aria-expanded={open ? 'true' : undefined}
-        aria-haspopup="true"
-        onClick={handleClick}
-      >
-        <MoreVertIcon />
+    <div className={classNames(s.More, open && s.Active)}>
+      <IconButton onClick={handleClick}>
+        <MoreVertIcon fontSize="small" />
       </IconButton>
 
       <Menu

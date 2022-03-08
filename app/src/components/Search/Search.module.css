@@ -1,0 +1,23 @@
+.Search {
+  z-index: 2;
+  position: relative;
+  width: 36px;
+  margin-left: 20px;
+}
+
+.Button {
+}
+
+.Button:hover svg,
+.Button.Active svg {
+  color: #333;
+}
+
+.Input {
+  position: absolute !important;
+  width: 200px;
+  visibility: hidden;
+}
+.Input.Active {
+  visibility: visible;
+}

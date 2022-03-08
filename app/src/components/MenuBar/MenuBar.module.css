@@ -1,29 +1,11 @@
 .MenuBar {
+  --MenuBarFontSize: 14px;
+  --MenuBarHoverBackground: #ddd;
+
   display: flex;
   flex-direction: row;
   align-items: center;
-  width: 100%;
+  height: 40px;
   padding: 20px 0;
   user-select: none;
-  --MenuBarFontSize: 14px;
-  --MenuBarHoverBackground: #ddd;
-}
-
-.Space {
-  flex: 1;
-}
-
-.Search {
-  width: 2em;
-  height: 2em;
-  text-align: center;
-  line-height: 2em;
-  margin-right: 40px;
-  border-radius: 1em;
-  font-size: var(--MenuBarFontSize);
-  cursor: pointer;
-}
-
-.Search:hover {
-  background: var(--MenuBarHoverBackground);
 }

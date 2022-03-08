@@ -1,8 +1,10 @@
 .Groups {
+  flex: 1;
   display: flex;
   flex-direction: row;
   align-items: center;
-  height: 30px;
+  justify-content: center;
+  height: 36px;
 }
 
 .Group {
@@ -20,16 +22,5 @@
 }
 
 .AddGroupButton {
-  width: 2em;
-  height: 2em;
-  text-align: center;
-  line-height: 2em;
   margin-left: 1em;
-  border-radius: 1em;
-  font-size: var(--MenuBarFontSize);
-  cursor: pointer;
-}
-
-.AddGroupButton:hover {
-  background: var(--MenuBarHoverBackground);
 }
