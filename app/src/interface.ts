@@ -1,6 +1,3 @@
-import type { IpcMain, IpcRenderer } from 'electron';
-import { Simplify } from 'type-fest';
-
 type filterKeysByValueType<T, V> = {
   [P in keyof T]: T[P] extends V ? P : never;
 }[keyof T];
@@ -10,7 +7,19 @@ declare global {
     electron?: {
       version: string;
       openLink(dest: string): void;
+      postLinks(
+        payload: {
+          activatedGroupId: number;
+          dests: string[];
+        },
+        callback: (data: DataRaw) => void
+      ): void;
+      getData(): DataRaw;
     };
+  }
+
+  interface File {
+    readonly path: string;
   }
 }
 

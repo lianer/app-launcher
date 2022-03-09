@@ -59,7 +59,7 @@ const getSublimeIcon = async function () {
 // getApps();
 
 // 将所有应用程序图标导出 png
-const generateIcon = async function () {
+const generate = async function () {
   let apps = await getApplications();
 
   // 补充 name 字段
@@ -126,11 +126,11 @@ const generateIcon = async function () {
   };
 
   // 导出 json
-  const out = path.resolve(__dirname, '../../app/src/data/data.json');
+  const out = path.resolve(__dirname, '../../electron/data/data.json');
   fs.writeFileSync(out, JSON.stringify(data, null, 2));
 
   console.log(`The ${out} is generated`);
 };
-generateIcon();
+generate();
 
 export {};

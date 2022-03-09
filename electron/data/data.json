@@ -1,0 +1,468 @@
+{
+  "iconSize": 100,
+  "activatedGroup": null,
+  "groups": [
+    {
+      "id": 0,
+      "name": "收藏",
+      "links": [
+        {
+          "dest": "/Applications/WeChat.app",
+          "name": "WeChat",
+          "icon": "/icons/WeChat.png"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "name": "应用程序",
+      "links": [
+        {
+          "dest": "/Applications/1Password 7.app",
+          "name": "1Password 7",
+          "icon": "/icons/1Password 7.png"
+        },
+        {
+          "dest": "/Applications/ACDSee Photo Studio 7.app",
+          "name": "ACDSee Photo Studio 7",
+          "icon": "/icons/ACDSee Photo Studio 7.png"
+        },
+        {
+          "dest": "/Applications/Alfred 4.app",
+          "name": "Alfred 4",
+          "icon": "/icons/Alfred 4.png"
+        },
+        {
+          "dest": "/Applications/Authy Desktop.app",
+          "name": "Authy Desktop",
+          "icon": "/icons/Authy Desktop.png"
+        },
+        {
+          "dest": "/Applications/Axure RP 9.app",
+          "name": "Axure RP 9",
+          "icon": "/icons/Axure RP 9.png"
+        },
+        {
+          "dest": "/Applications/BaiduNetdisk_mac.app",
+          "name": "BaiduNetdisk_mac",
+          "icon": "/icons/BaiduNetdisk_mac.png"
+        },
+        {
+          "dest": "/Applications/Bartender 4.app",
+          "name": "Bartender 4",
+          "icon": "/icons/Bartender 4.png"
+        },
+        {
+          "dest": "/Applications/BetterZip.app",
+          "name": "BetterZip",
+          "icon": "/icons/BetterZip.png"
+        },
+        {
+          "dest": "/Applications/Bob.app",
+          "name": "Bob",
+          "icon": "/icons/Bob.png"
+        },
+        {
+          "dest": "/Applications/Charles.app",
+          "name": "Charles",
+          "icon": "/icons/Charles.png"
+        },
+        {
+          "dest": "/Applications/ClashX.app",
+          "name": "ClashX",
+          "icon": "/icons/ClashX.png"
+        },
+        {
+          "dest": "/Applications/Contexts.app",
+          "name": "Contexts",
+          "icon": "/icons/Contexts.png"
+        },
+        {
+          "dest": "/Applications/cosbrowser.app",
+          "name": "cosbrowser",
+          "icon": "/icons/cosbrowser.png"
+        },
+        {
+          "dest": "/Applications/Craft.app",
+          "name": "Craft",
+          "icon": "/icons/Craft.png"
+        },
+        {
+          "dest": "/Applications/Dato.app",
+          "name": "Dato",
+          "icon": "/icons/Dato.png"
+        },
+        {
+          "dest": "/Applications/DingTalk.app",
+          "name": "DingTalk",
+          "icon": "/icons/DingTalk.png"
+        },
+        {
+          "dest": "/Applications/Easy New File.app",
+          "name": "Easy New File",
+          "icon": "/icons/Easy New File.png"
+        },
+        {
+          "dest": "/Applications/EasyConnect.app",
+          "name": "EasyConnect",
+          "icon": "/icons/EasyConnect.png"
+        },
+        {
+          "dest": "/Applications/GarageBand.app",
+          "name": "GarageBand",
+          "icon": "/icons/GarageBand.png"
+        },
+        {
+          "dest": "/Applications/Google Chrome Canary.app",
+          "name": "Google Chrome Canary",
+          "icon": "/icons/Google Chrome Canary.png"
+        },
+        {
+          "dest": "/Applications/Google Chrome.app",
+          "name": "Google Chrome",
+          "icon": "/icons/Google Chrome.png"
+        },
+        {
+          "dest": "/Applications/IINA.app",
+          "name": "IINA",
+          "icon": "/icons/IINA.png"
+        },
+        {
+          "dest": "/Applications/iMovie.app",
+          "name": "iMovie",
+          "icon": "/icons/iMovie.png"
+        },
+        {
+          "dest": "/Applications/iShot.app",
+          "name": "iShot",
+          "icon": "/icons/iShot.png"
+        },
+        {
+          "dest": "/Applications/iSlide.app",
+          "name": "iSlide",
+          "icon": "/icons/iSlide.png"
+        },
+        {
+          "dest": "/Applications/iTerm.app",
+          "name": "iTerm",
+          "icon": "/icons/iTerm.png"
+        },
+        {
+          "dest": "/Applications/iThoughtsX.app",
+          "name": "iThoughtsX",
+          "icon": "/icons/iThoughtsX.png"
+        },
+        {
+          "dest": "/Applications/Karabiner-Elements.app",
+          "name": "Karabiner-Elements",
+          "icon": "/icons/Karabiner-Elements.png"
+        },
+        {
+          "dest": "/Applications/Karabiner-EventViewer.app",
+          "name": "Karabiner-EventViewer",
+          "icon": "/icons/Karabiner-EventViewer.png"
+        },
+        {
+          "dest": "/Applications/Keydous Driver.app",
+          "name": "Keydous Driver",
+          "icon": "/icons/Keydous Driver.png"
+        },
+        {
+          "dest": "/Applications/Keynote.app",
+          "name": "Keynote",
+          "icon": "/icons/Keynote.png"
+        },
+        {
+          "dest": "/Applications/Kindle.app",
+          "name": "Kindle",
+          "icon": "/icons/Kindle.png"
+        },
+        {
+          "dest": "/Applications/Lark.app",
+          "name": "Lark",
+          "icon": "/icons/Lark.png"
+        },
+        {
+          "dest": "/Applications/Magnet.app",
+          "name": "Magnet",
+          "icon": "/icons/Magnet.png"
+        },
+        {
+          "dest": "/Applications/Microsoft Edge.app",
+          "name": "Microsoft Edge",
+          "icon": "/icons/Microsoft Edge.png"
+        },
+        {
+          "dest": "/Applications/Microsoft Excel.app",
+          "name": "Microsoft Excel",
+          "icon": "/icons/Microsoft Excel.png"
+        },
+        {
+          "dest": "/Applications/Microsoft PowerPoint.app",
+          "name": "Microsoft PowerPoint",
+          "icon": "/icons/Microsoft PowerPoint.png"
+        },
+        {
+          "dest": "/Applications/Microsoft Word.app",
+          "name": "Microsoft Word",
+          "icon": "/icons/Microsoft Word.png"
+        },
+        {
+          "dest": "/Applications/Mos.app",
+          "name": "Mos",
+          "icon": "/icons/Mos.png"
+        },
+        {
+          "dest": "/Applications/MWeb.app",
+          "name": "MWeb",
+          "icon": "/icons/MWeb.png"
+        },
+        {
+          "dest": "/Applications/Navicat Premium.app",
+          "name": "Navicat Premium",
+          "icon": "/icons/Navicat Premium.png"
+        },
+        {
+          "dest": "/Applications/NeteaseMusic.app",
+          "name": "NeteaseMusic",
+          "icon": "/icons/NeteaseMusic.png"
+        },
+        {
+          "dest": "/Applications/Notion.app",
+          "name": "Notion",
+          "icon": "/icons/Notion.png"
+        },
+        {
+          "dest": "/Applications/Numbers.app",
+          "name": "Numbers",
+          "icon": "/icons/Numbers.png"
+        },
+        {
+          "dest": "/Applications/OmniPlan.app",
+          "name": "OmniPlan",
+          "icon": "/icons/OmniPlan.png"
+        },
+        {
+          "dest": "/Applications/Pages.app",
+          "name": "Pages",
+          "icon": "/icons/Pages.png"
+        },
+        {
+          "dest": "/Applications/Pap.er.app",
+          "name": "Pap.er",
+          "icon": "/icons/Pap.er.png"
+        },
+        {
+          "dest": "/Applications/Parallels Desktop.app",
+          "name": "Parallels Desktop",
+          "icon": "/icons/Parallels Desktop.png"
+        },
+        {
+          "dest": "/Applications/Paste.app",
+          "name": "Paste",
+          "icon": "/icons/Paste.png"
+        },
+        {
+          "dest": "/Applications/PD Runner.app",
+          "name": "PD Runner",
+          "icon": "/icons/PD Runner.png"
+        },
+        {
+          "dest": "/Applications/PDF Expert.app",
+          "name": "PDF Expert",
+          "icon": "/icons/PDF Expert.png"
+        },
+        {
+          "dest": "/Applications/PDF Reader Pro.app",
+          "name": "PDF Reader Pro",
+          "icon": "/icons/PDF Reader Pro.png"
+        },
+        {
+          "dest": "/Applications/Postman.app",
+          "name": "Postman",
+          "icon": "/icons/Postman.png"
+        },
+        {
+          "dest": "/Applications/QQ.app",
+          "name": "QQ",
+          "icon": "/icons/QQ.png"
+        },
+        {
+          "dest": "/Applications/QQLive.app",
+          "name": "QQLive",
+          "icon": "/icons/QQLive.png"
+        },
+        {
+          "dest": "/Applications/QQMusic.app",
+          "name": "QQMusic",
+          "icon": "/icons/QQMusic.png"
+        },
+        {
+          "dest": "/Applications/Raycast.app",
+          "name": "Raycast",
+          "icon": "/icons/Raycast.png"
+        },
+        {
+          "dest": "/Applications/Safari.app",
+          "name": "Safari",
+          "icon": "/icons/Safari.png"
+        },
+        {
+          "dest": "/Applications/SecureCRT.app",
+          "name": "SecureCRT",
+          "icon": "/icons/SecureCRT.png"
+        },
+        {
+          "dest": "/Applications/Sketch.app",
+          "name": "Sketch",
+          "icon": "/icons/Sketch.png"
+        },
+        {
+          "dest": "/Applications/SmartGit.app",
+          "name": "SmartGit",
+          "icon": "/icons/SmartGit.png"
+        },
+        {
+          "dest": "/Applications/Snagit 2022.app",
+          "name": "Snagit 2022",
+          "icon": "/icons/Snagit 2022.png"
+        },
+        {
+          "dest": "/Applications/Steam.app",
+          "name": "Steam",
+          "icon": "/icons/Steam.png"
+        },
+        {
+          "dest": "/Applications/Sublime Text.app",
+          "name": "Sublime Text",
+          "icon": "/icons/Sublime Text.png"
+        },
+        {
+          "dest": "/Applications/Swish.app",
+          "name": "Swish",
+          "icon": "/icons/Swish.png"
+        },
+        {
+          "dest": "/Applications/SwitchHosts.app",
+          "name": "SwitchHosts",
+          "icon": "/icons/SwitchHosts.png"
+        },
+        {
+          "dest": "/Applications/Tencent Lemon.app",
+          "name": "Tencent Lemon",
+          "icon": "/icons/Tencent Lemon.png"
+        },
+        {
+          "dest": "/Applications/Termius.app",
+          "name": "Termius",
+          "icon": "/icons/Termius.png"
+        },
+        {
+          "dest": "/Applications/Thunder.app",
+          "name": "Thunder",
+          "icon": "/icons/Thunder.png"
+        },
+        {
+          "dest": "/Applications/TickTick.app",
+          "name": "TickTick",
+          "icon": "/icons/TickTick.png"
+        },
+        {
+          "dest": "/Applications/ToDesk.app",
+          "name": "ToDesk",
+          "icon": "/icons/ToDesk.png"
+        },
+        {
+          "dest": "/Applications/TopNotch.app",
+          "name": "TopNotch",
+          "icon": "/icons/TopNotch.png"
+        },
+        {
+          "dest": "/Applications/Tunnelblick.app",
+          "name": "Tunnelblick",
+          "icon": "/icons/Tunnelblick.png"
+        },
+        {
+          "dest": "/Applications/Typora.app",
+          "name": "Typora",
+          "icon": "/icons/Typora.png"
+        },
+        {
+          "dest": "/Applications/VIA.app",
+          "name": "VIA",
+          "icon": "/icons/VIA.png"
+        },
+        {
+          "dest": "/Applications/Visual Studio Code.app",
+          "name": "Visual Studio Code",
+          "icon": "/icons/Visual Studio Code.png"
+        },
+        {
+          "dest": "/Applications/WeChat.app",
+          "name": "WeChat",
+          "icon": "/icons/WeChat.png"
+        },
+        {
+          "dest": "/Applications/wechatwebdevtools.app",
+          "name": "wechatwebdevtools",
+          "icon": "/icons/wechatwebdevtools.png"
+        },
+        {
+          "dest": "/Applications/wpsoffice.app",
+          "name": "wpsoffice",
+          "icon": "/icons/wpsoffice.png"
+        },
+        {
+          "dest": "/Applications/Xcode.app",
+          "name": "Xcode",
+          "icon": "/icons/Xcode.png"
+        },
+        {
+          "dest": "/Applications/XMind.app",
+          "name": "XMind",
+          "icon": "/icons/XMind.png"
+        },
+        {
+          "dest": "/Applications/Xnip.app",
+          "name": "Xnip",
+          "icon": "/icons/Xnip.png"
+        },
+        {
+          "dest": "/Applications/企业微信.app",
+          "name": "企业微信",
+          "icon": "/icons/企业微信.png"
+        },
+        {
+          "dest": "/Applications/印象笔记.app",
+          "name": "印象笔记",
+          "icon": "/icons/印象笔记.png"
+        },
+        {
+          "dest": "/Applications/唐桥云会议.app",
+          "name": "唐桥云会议",
+          "icon": "/icons/唐桥云会议.png"
+        },
+        {
+          "dest": "/Applications/网易有道词典.app",
+          "name": "网易有道词典",
+          "icon": "/icons/网易有道词典.png"
+        },
+        {
+          "dest": "/Applications/腾讯文档.app",
+          "name": "腾讯文档",
+          "icon": "/icons/腾讯文档.png"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Movies",
+      "links": []
+    },
+    {
+      "id": 3,
+      "name": "Music",
+      "links": []
+    }
+  ]
+}

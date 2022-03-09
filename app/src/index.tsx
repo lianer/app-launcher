@@ -14,7 +14,10 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 
 // init state
-import './init-state.ts';
+import './init-state';
+
+// drag links
+import './drag-links';
 
 ReactDOM.render(
   <React.StrictMode>

@@ -8,7 +8,7 @@ function createWindow() {
     width: 800,
     height: 600,
     webPreferences: {
-      preload: resolve('preload.js'),
+      preload: resolve('lib/preload.js'),
     },
   });
 

@@ -14,6 +14,7 @@ class Settings implements SettingsConstuctor {
     this.iconSize = data.iconSize ?? 128;
     this.groups = data.groups ?? [];
     this.activatedGroup = this.activatedGroup ?? this.groups?.[0] ?? null;
+    console.log('activatedGroup', this.activatedGroup);
   }
 
   setIconSize(iconSize: number) {
