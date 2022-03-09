@@ -2,33 +2,23 @@ type filterKeysByValueType<T, V> = {
   [P in keyof T]: T[P] extends V ? P : never;
 }[keyof T];
 
-declare global {
-  interface Window {
-    electron?: {
-      version: string;
-      openLink(dest: string): void;
-      removeLink(
-        payload: {
-          groupId: number;
-          dest: string;
-        },
-        callback: (success: boolean) => void
-      ): void;
-      postLinks(
-        payload: {
-          activatedGroupId: number;
-          dests: string[];
-        },
-        callback: (data: DataRaw) => void
-      ): void;
-      getData(): DataRaw;
-    };
-  }
+export type ElectronExpose = {
+  version: string;
 
-  interface File {
-    readonly path: string;
-  }
-}
+  readData(): Promise<DataRaw>;
+
+  writeData(data: DataRaw): void;
+
+  openLink(dest: string): void;
+
+  generateLinks(
+    payload: {
+      activatedGroupId: number;
+      dests: string[];
+    },
+    callback: (data: DataRaw) => void
+  ): void;
+};
 
 export type Group = {
   id: number;
@@ -56,10 +46,10 @@ export type SettingsConstuctor = {
   moveGroupToIndex(id: number, index: number): Group;
   removeGroup(id: number): void;
   renameGroup(id: number, name: string): Group;
+
+  removeLinks(groupId: number, linkDests: string[]): void;
 };
 
 export type DataRaw = Partial<
   Omit<SettingsConstuctor, filterKeysByValueType<SettingsConstuctor, Function>>
 >;
-
-// export type DataRaw = Partial<SettingsConstuctor>;

@@ -126,8 +126,13 @@ export const generateLink = async (dest: string): Promise<Link | void> => {
   link.name = await getLinkName(dest);
   if (!link.name) return;
 
-  link.icon = await getLinkIcon(link.name, dest);
-  if (!link.icon) return;
+  try {
+    link.icon = await getLinkIcon(link.name, dest);
+    if (!link.icon) return;
+  } catch (e) {
+    console.error('GET_LINK_ICON_ERROR', e);
+    return;
+  }
 
   return link;
 };

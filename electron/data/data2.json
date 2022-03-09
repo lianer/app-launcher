@@ -1,25 +1,35 @@
 {
   "iconSize": 100,
-  "_activatedGroup": -1,
+  "activatedGroup": null,
   "groups": [
     {
       "id": 0,
       "name": "收藏",
       "links": [
         {
-          "dest": "/Applications/WeChat.app",
-          "name": "WeChat",
-          "icon": "/icons/WeChat.png"
+          "dest": "/Applications/Authy Desktop.app",
+          "name": "Authy Desktop",
+          "icon": "/icons/Authy Desktop.png"
+        },
+        {
+          "dest": "/Applications/Google Chrome.app",
+          "name": "Google Chrome",
+          "icon": "/icons/Google Chrome.png"
+        },
+        {
+          "dest": "/Applications/Kindle.app",
+          "name": "Kindle",
+          "icon": "/icons/Kindle.png"
+        },
+        {
+          "dest": "/Applications/Safari.app",
+          "name": "Safari",
+          "icon": "/icons/Safari.png"
         },
         {
           "dest": "/Applications/NeteaseMusic.app",
           "name": "NeteaseMusic",
-          "icon": "/icons/NeteaseMusic.png"
-        },
-        {
-          "dest": "/System/Applications/Messages.app",
-          "name": "Messages",
-          "icon": "/icons/Messages.png"
+          "icon": "/Applications/NeteaseMusic.app/Contents/Resources/163Music.icns"
         }
       ]
     },

@@ -13,7 +13,7 @@ document.addEventListener('drop', (e: DragEvent) => {
     }
 
     const dests = Array.from(files).map((file) => file.path);
-    window.electron?.postLinks(
+    window.electron?.generateLinks(
       { activatedGroupId: settings.activatedGroupId, dests },
       (data: DataRaw) => {
         console.log('callback', data);
