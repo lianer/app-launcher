@@ -16,4 +16,4 @@ yarn-error.log*
 node_modules
 
 # bundle
-electron/lib
+dist
