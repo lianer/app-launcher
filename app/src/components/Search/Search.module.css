@@ -16,8 +16,8 @@
 .Input {
   position: absolute !important;
   width: 200px;
-  visibility: hidden;
+  /* visibility: hidden; */
 }
 .Input.Active {
-  visibility: visible;
+  /* visibility: visible; */
 }
