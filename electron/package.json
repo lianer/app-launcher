@@ -4,15 +4,20 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "dev": "run-p start tsc",
-    "start": "electron .",
-    "tsc": "tsc -w",
+    "dev": "run-p dev:*",
+    "dev:electron": "electron .",
+    "dev:rollup": "rollup -w -c rollup.config.js",
     "build": "echo \"build electron\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "lianer",
   "license": "ISC",
   "devDependencies": {
+    "@rollup/plugin-babel": "^5.3.1",
+    "@rollup/plugin-commonjs": "^21.0.2",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^13.1.3",
+    "@rollup/plugin-typescript": "^8.3.1",
     "@semantic-release/changelog": "^6.0.1",
     "@semantic-release/commit-analyzer": "^9.0.2",
     "@semantic-release/git": "^10.0.1",
