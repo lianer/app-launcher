@@ -5,9 +5,6 @@
   margin-left: 20px;
 }
 
-.Button {
-}
-
 .Button:hover svg,
 .Button.Active svg {
   color: #333;
