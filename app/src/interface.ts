@@ -7,6 +7,13 @@ declare global {
     electron?: {
       version: string;
       openLink(dest: string): void;
+      removeLink(
+        payload: {
+          groupId: number;
+          dest: string;
+        },
+        callback: (success: boolean) => void
+      ): void;
       postLinks(
         payload: {
           activatedGroupId: number;

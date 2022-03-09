@@ -1,4 +1,6 @@
+import { Box, Menu, MenuItem } from '@mui/material';
 import { observer } from 'mobx-react';
+import React from 'react';
 import { Link } from '../../interface';
 import { filter } from '../../state/Filter';
 import { settings } from '../../state/Settings';
@@ -37,6 +39,43 @@ export const Content: React.FC = observer(() => {
     });
   }
 
+  // 右键图标
+  const [contextMenu, setContextMenu] = React.useState<{
+    link: Link;
+    mouseX: number;
+    mouseY: number;
+  } | null>(null);
+
+  const onContextMenu = (
+    event: React.MouseEvent<HTMLDivElement, MouseEvent>,
+    link: Link
+  ) => {
+    event.preventDefault();
+    setContextMenu(
+      contextMenu
+        ? null
+        : { link, mouseX: event.clientX, mouseY: event.clientY }
+    );
+  };
+
+  // 关闭右键菜单
+  const handleClose = (
+    event: React.MouseEvent,
+    type: 'open' | 'remove' | void
+  ) => {
+    setContextMenu(null);
+    switch (type) {
+      case 'open':
+        contextMenu?.link && openLink(contextMenu?.link);
+        break;
+      case 'remove':
+        contextMenu?.link && removeLink(contextMenu?.link);
+        break;
+      default:
+        console.log("Don't do everthing");
+    }
+  };
+
   // console.log(links[0]);
   // (window as any).temp1 = links[0]
 
@@ -44,9 +83,24 @@ export const Content: React.FC = observer(() => {
     window.electron?.openLink(link.dest);
   };
 
+  const removeLink = (link: Link) => {
+    window.electron?.removeLink(
+      {
+        groupId: settings.activatedGroup!.id,
+        dest: link.dest,
+      },
+      (success: boolean) => {
+        if (success) {
+          const data = window.electron!.getData();
+          settings.importData(data);
+        }
+      }
+    );
+  };
+
   return (
-    <div className={s.Content}>
-      <div
+    <Box className={s.Content}>
+      <Box
         className={s.Scroller}
         style={{
           gridTemplateColumns: `repeat(auto-fill, ${
@@ -60,7 +114,7 @@ export const Content: React.FC = observer(() => {
         }}
       >
         {links.map((link) => (
-          <div
+          <Box
             className={s.Link}
             key={link.name}
             style={{
@@ -70,16 +124,19 @@ export const Content: React.FC = observer(() => {
               paddingBottom: paddingTB,
             }}
             onClick={() => openLink(link)}
+            onContextMenu={(event) => {
+              onContextMenu(event, link);
+            }}
           >
-            <div
+            <Box
               className={s.Icon}
               style={{
                 width: size,
                 height: size,
                 backgroundImage: `url('${link.icon}')`,
               }}
-            ></div>
-            <div
+            ></Box>
+            <Box
               className={s.Title}
               style={{
                 width: size + paddingLR, // 只加一个 padding，另一个 padding 留一点边距好看一些
@@ -89,10 +146,26 @@ export const Content: React.FC = observer(() => {
               }}
             >
               {link.name}
-            </div>
-          </div>
+            </Box>
+          </Box>
         ))}
-      </div>
-    </div>
+      </Box>
+      <Menu
+        open={contextMenu !== null}
+        onClose={(e: React.MouseEvent) => handleClose(e)}
+        anchorReference="anchorPosition"
+        anchorPosition={
+          contextMenu !== null
+            ? {
+                left: contextMenu.mouseX,
+                top: contextMenu.mouseY,
+              }
+            : undefined
+        }
+      >
+        <MenuItem onClick={handleClose.bind('open')}>打开</MenuItem>
+        <MenuItem onClick={handleClose.bind('remove')}>删除</MenuItem>
+      </Menu>
+    </Box>
   );
 });
