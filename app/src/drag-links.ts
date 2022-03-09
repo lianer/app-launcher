@@ -14,7 +14,7 @@ document.addEventListener('drop', (e: DragEvent) => {
 
     const dests = Array.from(files).map((file) => file.path);
     window.electron?.postLinks(
-      { activatedGroupId: settings.activatedGroup?.id ?? -1, dests },
+      { activatedGroupId: settings.activatedGroupId, dests },
       (data: DataRaw) => {
         console.log('callback', data);
         // const data = window.electron?.importData();

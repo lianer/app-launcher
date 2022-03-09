@@ -22,15 +22,14 @@ const AddGroupBtton: React.FC = function () {
 };
 
 export const Groups: React.FC = observer(function () {
-  const { activatedGroup, groups } = settings;
-  const id = activatedGroup?.id;
+  const { activatedGroupId, groups } = settings;
 
   return (
     <div className={s.Groups}>
       {groups.map((group) => (
         <div
           className={classnames(s.Group, {
-            [s.Active]: group.id === id,
+            [s.Active]: group.id === activatedGroupId,
           })}
           key={group.id}
           onClick={() => settings.activeGroup(group.id)}

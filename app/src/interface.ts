@@ -49,41 +49,17 @@ export type SettingsConstuctor = {
   setIconSize(iconSize: number): void;
 
   groups: Group[];
-  activatedGroup: Group | null;
-  activeGroup(id: number): Group;
+  _activatedGroupId: number;
+  get activatedGroupId(): number;
+  activeGroup(id: number): void;
   addGroup(name: string): Group;
   moveGroupToIndex(id: number, index: number): Group;
   removeGroup(id: number): void;
   renameGroup(id: number, name: string): Group;
 };
 
-export type DataRaw = Omit<
-  SettingsConstuctor,
-  filterKeysByValueType<SettingsConstuctor, Function>
+export type DataRaw = Partial<
+  Omit<SettingsConstuctor, filterKeysByValueType<SettingsConstuctor, Function>>
 >;
 
-// export type DataSchema = {
-//   settings: {};
-//   keys: {};
-//   data: [
-//     {
-//       groupName: string;
-//       items: Array<FileItem | DirItem>;
-//     }
-//   ];
-// };
-
-// export type FileItem = {
-//   type: 'file';
-//   title: string;
-//   keywords: string | undefined; // isDir 时为 undefined
-//   icon: string;
-//   dest: string;
-//   isTop: boolean;
-// };
-
-// export type DirItem = Simplify<
-//   {
-//     type: 'dir';
-//   } & Omit<FileItem, 'type' | 'keywords'>
-// >;
+// export type DataRaw = Partial<SettingsConstuctor>;

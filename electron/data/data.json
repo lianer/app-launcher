@@ -1,6 +1,6 @@
 {
   "iconSize": 100,
-  "activatedGroup": null,
+  "_activatedGroup": -1,
   "groups": [
     {
       "id": 0,
@@ -10,6 +10,11 @@
           "dest": "/Applications/WeChat.app",
           "name": "WeChat",
           "icon": "/icons/WeChat.png"
+        },
+        {
+          "dest": "/Applications/NeteaseMusic.app",
+          "name": "NeteaseMusic",
+          "icon": "/icons/NeteaseMusic.png"
         }
       ]
     },

@@ -6,8 +6,7 @@ class Settings implements SettingsConstuctor {
   iconSize: number = 64;
   groups: Group[] = [];
 
-  // activatedGroup 有记录在
-  _activatedGroup: Group | null = null;
+  _activatedGroupId: number = -1;
 
   constructor() {
     makeAutoObservable(this);
@@ -16,27 +15,26 @@ class Settings implements SettingsConstuctor {
   importData(data: DataRaw): void {
     this.iconSize = data.iconSize ?? 128;
     this.groups = data.groups ?? [];
-    this._activatedGroup = this.activatedGroup ?? null;
+    this._activatedGroupId = data._activatedGroupId ?? -1;
   }
 
   setIconSize(iconSize: number) {
     this.iconSize = iconSize;
   }
 
-  get activatedGroup(): Group | null {
-    const exists = _.find(this.groups, { id: this._activatedGroup?.id });
-    if (exists) {
-      return this._activatedGroup;
+  get activatedGroupId(): number {
+    const group = _.find(this.groups, { id: this._activatedGroupId });
+    if (group) {
+      return this._activatedGroupId;
     } else if (this.groups.length > 0) {
-      return this.groups[0];
+      return this.groups[0].id;
     } else {
-      return null;
+      return -1;
     }
   }
 
   activeGroup(id: number) {
-    this._activatedGroup = _.find(this.groups, { id })!;
-    return this.activatedGroup!;
+    this._activatedGroupId = id;
   }
 
   addGroup(name: string) {
@@ -62,9 +60,9 @@ class Settings implements SettingsConstuctor {
     this.groups.splice(index, 1);
 
     // 如果删除的是当前分组，则激活左边的组或右边的组
-    if (this.activatedGroup?.id === id) {
-      this._activatedGroup =
-        this.groups[index - 1] || this.groups[index] || null;
+    if (this.activatedGroupId === id) {
+      this._activatedGroupId =
+        this.groups[index - 1]?.id ?? this.groups[index]?.id ?? -1;
     }
   }
 

@@ -20,7 +20,7 @@ export const Content: React.FC = observer(() => {
 
   // filter
   let links =
-    settings.groups.find((group) => group.id === settings.activatedGroup?.id)
+    settings.groups.find((group) => group.id === settings.activatedGroupId)
       ?.links || [];
   const keywords = filter.keywords;
   if (keywords.trim() !== '') {
@@ -86,7 +86,7 @@ export const Content: React.FC = observer(() => {
   const removeLink = (link: Link) => {
     window.electron?.removeLink(
       {
-        groupId: settings.activatedGroup!.id,
+        groupId: settings.activatedGroupId,
         dest: link.dest,
       },
       (success: boolean) => {
