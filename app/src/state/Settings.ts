@@ -3,14 +3,11 @@ import { makeAutoObservable, reaction } from 'mobx';
 import { DataRaw, Group, SettingsConstuctor } from '../interface';
 
 class Settings implements SettingsConstuctor {
-  iconSize: number = 64;
-  groups: Group[] = [];
-
-  _activatedGroupId: number = -1;
-
   constructor() {
     makeAutoObservable(this);
   }
+
+  /* Global */
 
   importData(data: DataRaw): void {
     this.iconSize = data.iconSize ?? 128;
@@ -18,9 +15,26 @@ class Settings implements SettingsConstuctor {
     this._activatedGroupId = data._activatedGroupId ?? -1;
   }
 
+  /* Content */
+
+  iconSize: number = 64;
   setIconSize(iconSize: number) {
     this.iconSize = iconSize;
   }
+
+  removeLinks(groupId: number, linkDests: string[]) {
+    const group = _.find(this.groups, { id: groupId });
+    if (group) {
+      group.links = group.links.filter(
+        (link) => !linkDests.includes(link.dest)
+      );
+    }
+  }
+
+  /* Group */
+
+  _activatedGroupId: number = -1;
+  groups: Group[] = [];
 
   get activatedGroupId(): number {
     const group = _.find(this.groups, { id: this._activatedGroupId });
@@ -71,15 +85,6 @@ class Settings implements SettingsConstuctor {
     group.name = name;
     return group;
   }
-
-  removeLinks(groupId: number, linkDests: string[]) {
-    const group = _.find(this.groups, { id: groupId });
-    if (group) {
-      group.links = group.links.filter(
-        (link) => !linkDests.includes(link.dest)
-      );
-    }
-  }
 }
 
 export const settings = new Settings();
@@ -91,6 +96,7 @@ reaction(
       iconSize: settings.iconSize,
       _activatedGroupId: settings.activatedGroupId,
       groups: settings.groups,
+      // links: settings.groups[0]?.links,
     };
   },
   (data) => {

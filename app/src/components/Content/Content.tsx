@@ -1,4 +1,5 @@
 import { Box, Menu, MenuItem } from '@mui/material';
+import classNames from 'classnames';
 import { observer } from 'mobx-react';
 import React from 'react';
 import { Link } from '../../interface';
@@ -58,24 +59,6 @@ export const Content: React.FC = observer(() => {
     );
   };
 
-  // 关闭右键菜单
-  const handleClose = (
-    event: React.MouseEvent,
-    type: 'open' | 'remove' | void
-  ) => {
-    setContextMenu(null);
-    switch (type) {
-      case 'open':
-        contextMenu?.link && openLink(contextMenu?.link);
-        break;
-      case 'remove':
-        contextMenu?.link && removeLink(contextMenu?.link);
-        break;
-      default:
-        console.log("Don't do everthing");
-    }
-  };
-
   // console.log(links[0]);
   // (window as any).temp1 = links[0]
 
@@ -84,19 +67,28 @@ export const Content: React.FC = observer(() => {
   };
 
   const removeLink = (link: Link) => {
-    // TODO: 改用 settings.removeLinks
-    // window.electron?.removeLink(
-    //   {
-    //     groupId: settings.activatedGroupId,
-    //     dest: link.dest,
-    //   },
-    //   (success: boolean) => {
-    //     if (success) {
-    //       const data = window.electron!.getData();
-    //       settings.importData(data);
-    //     }
-    //   }
-    // );
+    const linkDests = [link.dest];
+    settings.removeLinks(settings.activatedGroupId, linkDests);
+  };
+
+  // 关闭右键菜单
+  enum CloseType {
+    'open',
+    'remove',
+  }
+
+  const handleClose = (type?: CloseType) => {
+    setContextMenu(null);
+    switch (type) {
+      case CloseType.open:
+        contextMenu?.link && openLink(contextMenu.link);
+        break;
+      case CloseType.remove:
+        contextMenu?.link && removeLink(contextMenu.link);
+        break;
+      default:
+        console.log('Do nothing');
+    }
   };
 
   return (
@@ -116,7 +108,9 @@ export const Content: React.FC = observer(() => {
       >
         {links.map((link) => (
           <Box
-            className={s.Link}
+            className={classNames(s.Link, {
+              [s.Active]: contextMenu !== null && link === contextMenu.link, // 右键菜单弹出的时候，继续保持 hover 效果
+            })}
             key={link.name}
             style={{
               width: size + paddingLR * 2, // padding-left/padding-right 集成到 width 中
@@ -153,7 +147,7 @@ export const Content: React.FC = observer(() => {
       </Box>
       <Menu
         open={contextMenu !== null}
-        onClose={(e: React.MouseEvent) => handleClose(e)}
+        onClose={() => handleClose()}
         anchorReference="anchorPosition"
         anchorPosition={
           contextMenu !== null
@@ -164,8 +158,8 @@ export const Content: React.FC = observer(() => {
             : undefined
         }
       >
-        <MenuItem onClick={handleClose.bind('open')}>打开</MenuItem>
-        <MenuItem onClick={handleClose.bind('remove')}>删除</MenuItem>
+        <MenuItem onClick={() => handleClose(CloseType.open)}>打开</MenuItem>
+        <MenuItem onClick={() => handleClose(CloseType.remove)}>删除</MenuItem>
       </Menu>
     </Box>
   );
