@@ -16,10 +16,11 @@ export default {
   output: {
     file: 'dist/preload.js',
     format: 'cjs',
+    sourcemap: true,
   },
   plugins: [
     commonjs(),
-    nodeResolve(),
+    // nodeResolve(),
     typescript(),
     json(),
     babel({ babelHelpers: 'bundled' }),
