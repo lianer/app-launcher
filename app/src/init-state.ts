@@ -7,7 +7,7 @@ const importData = async () => {
     const data = await window.electron.readData();
     settings.importData(data);
   } else {
-    const data = (await import('./data/data.json')) as DataRaw;
+    const data = (await import('./data/data.json')).default as DataRaw;
     settings.importData(data);
   }
 };

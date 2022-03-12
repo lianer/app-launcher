@@ -1,4 +1,4 @@
-import { Box, IconButton, Input } from '@mui/material';
+import { Box } from '@mui/material';
 import { Groups } from '../Groups';
 import { More } from '../More';
 import s from './MenuBar.module.css';

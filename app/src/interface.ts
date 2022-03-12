@@ -46,8 +46,8 @@ export type ElectronExpose = {
 
 export type DataRaw = {
   iconSize: number;
-  groups: Group[];
   _activatedGroupId: number;
+  groups: Group[];
 };
 
 export type SettingsPrototype = {
