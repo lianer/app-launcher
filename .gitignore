@@ -17,3 +17,6 @@ node_modules
 
 # bundle
 dist
+
+# css declaration
+.css.d.ts
