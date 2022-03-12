@@ -19,4 +19,4 @@ node_modules
 dist
 
 # css declaration
-.css.d.ts
+*.css.d.ts
