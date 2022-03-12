@@ -1,8 +1,8 @@
 import _ from 'lodash';
 import { makeAutoObservable, reaction } from 'mobx';
-import { DataRaw, Group, SettingsConstuctor } from '../interface';
+import { DataRaw, Group, SettingsPrototype } from '../interface';
 
-class Settings implements SettingsConstuctor {
+class Settings implements DataRaw, SettingsPrototype {
   constructor() {
     makeAutoObservable(this);
   }
