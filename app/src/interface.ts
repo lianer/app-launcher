@@ -31,7 +31,7 @@ export interface SettingsPrototype {
   removeLinks(groupId: number, linkDests: string[]): void;
 
   // Group
-  get activatedGroupId(): number;
+  readonly activatedGroupId: number; // get activatedGroupId (): number
   activeGroup(id: number): void;
   addGroup(name: string): Group;
   moveGroupToIndex(id: number, index: number): Group;
