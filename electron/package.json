@@ -4,11 +4,11 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "dev": "npm-run-all -l clean build -p dev:*",
+    "dev": "npm-run-all -l clean build:rollup -p dev:*",
     "dev:electron": "electron .",
     "dev:rollup": "rollup -w -c rollup.config.js",
     "clean": "rimraf dist",
-    "build": "echo \"build electron\"",
+    "build:rollup": "rollup -c rollup.config.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "lianer",
