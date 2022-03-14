@@ -1,31 +1,3 @@
-import { Mutable, Simplify } from 'type-fest';
-
-type FilterKeysByValueType<T, V> = {
-  [P in keyof T]: T[P] extends V ? P : never;
-}[keyof T];
-
-// prettier-ignore
-type IfEquals<X, Y, A = X, B = never> =
-  (<T>() => T extends X ? 1 : 2) extends (<T>() => T extends Y ? 1 : 2)
-  ? A : B;
-
-type WritableKeys<T> = {
-  [P in keyof T]-?: IfEquals<
-    { [Q in P]: T[P] },
-    { -readonly [Q in P]: T[P] },
-    P
-  >;
-}[keyof T];
-
-type ReadonlyKeys<T> = {
-  [P in keyof T]-?: IfEquals<
-    { [Q in P]: T[P] },
-    { -readonly [Q in P]: T[P] },
-    never,
-    P
-  >;
-}[keyof T];
-
 export type ElectronExpose = {
   version: string;
 
@@ -50,7 +22,7 @@ export type DataRaw = {
   groups: Group[];
 };
 
-export type SettingsPrototype = {
+export interface SettingsPrototype {
   // Global
   importData(data: DataRaw): void;
 
@@ -65,7 +37,7 @@ export type SettingsPrototype = {
   moveGroupToIndex(id: number, index: number): Group;
   removeGroup(id: number): void;
   renameGroup(id: number, name: string): Group;
-};
+}
 
 export type Group = {
   id: number;

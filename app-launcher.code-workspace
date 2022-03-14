@@ -9,5 +9,7 @@
       "path": "electron"
     }
   ],
-  "settings": {}
+  "settings": {
+    "typescript.tsdk": "app/node_modules/typescript/lib"
+  }
 }
