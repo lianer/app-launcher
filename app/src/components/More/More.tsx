@@ -1,7 +1,21 @@
 import React from 'react';
-import { IconButton, Menu, MenuItem, Box, Slider } from '@mui/material';
+import {
+  IconButton,
+  Menu,
+  MenuItem,
+  Box,
+  Slider,
+  ListItemIcon,
+  Typography,
+  ListItemText,
+  Divider,
+} from '@mui/material';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import SettingsIcon from '@mui/icons-material/Settings';
+import CropFreeIcon from '@mui/icons-material/CropFree';
+import CropOriginalIcon from '@mui/icons-material/CropOriginal';
+import AppsIcon from '@mui/icons-material/Apps';
+import ViewListIcon from '@mui/icons-material/ViewList';
 import s from './More.module.css';
 import { observer } from 'mobx-react';
 import { settings } from '../../state/Settings';
@@ -38,29 +52,49 @@ export const More: React.FC = observer(() => {
           },
         }}
       >
-        <MenuItem>
-          <SettingsIcon />
-          <span>About</span>
+        <MenuItem disableRipple>
+          <ListItemIcon>
+            <IconButton>
+              <AppsIcon fontSize="small" />
+            </IconButton>
+          </ListItemIcon>
+          <ListItemIcon>
+            <IconButton>
+              <ViewListIcon fontSize="small" />
+            </IconButton>
+          </ListItemIcon>
         </MenuItem>
+
+        <Divider />
+
         <MenuItem>
-          <Box width={200 - 32}>
-            <Slider
-              size="small"
-              value={settings.iconSize}
-              max={164}
-              min={44}
-              marks={[{ label: '', value: 64 }]}
-              aria-label="Small"
-              valueLabelDisplay="auto"
-              onChange={(ev, val) => {
-                settings.setIconSize(val as number);
-              }}
-            />
-          </Box>
+          <ListItemIcon>
+            <CropFreeIcon />
+          </ListItemIcon>
+          <Slider
+            size="small"
+            value={settings.iconSize}
+            max={128}
+            min={48}
+            step={8}
+            marks={[{ label: '', value: 64 }]}
+            valueLabelDisplay="auto"
+            onChange={(ev, val) => {
+              settings.setIconSize(val as number);
+            }}
+          />
         </MenuItem>
-        <MenuItem>
-          <SettingsIcon />
-          <span>Settings</span>
+
+        <Divider />
+
+        <MenuItem disableRipple>
+          <ListItemIcon>
+            <SettingsIcon />
+          </ListItemIcon>
+          <ListItemText>设置</ListItemText>
+          <Typography variant="body2" color="text.secondary">
+            ⌘ + ,
+          </Typography>
         </MenuItem>
       </Menu>
     </div>

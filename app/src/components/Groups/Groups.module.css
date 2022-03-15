@@ -12,15 +12,25 @@
   padding: 4px 12px;
   list-style: none;
   border-radius: 6px;
-  font-size: var(--MenuBarFontSize);
+  font-size: 14px;
   cursor: pointer;
+  color: var(--menu-bar-font-color);
 }
 
 .Group.Active,
 .Group:hover {
-  background: var(--MenuBarHoverBackground);
+  background: var(--menu-bar-hover-background);
 }
 
 .AddGroupButton {
   margin-left: 1em;
+}
+
+.AddGroupButton svg {
+  color: var(--menu-bar-font-color);
+  opacity: 0.5;
+}
+
+.AddGroupButton:hover svg {
+  opacity: 1;
 }

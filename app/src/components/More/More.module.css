@@ -1,9 +1,13 @@
 .More {
   margin-right: 20px;
-  color: #666;
+  opacity: 0.5;
 }
 
-.More:hover svg,
-.More.Active svg {
-  color: #333;
+.More svg {
+  color: var(--menu-bar-font-color);
+}
+
+.More:hover,
+.More.Active {
+  opacity: 1;
 }

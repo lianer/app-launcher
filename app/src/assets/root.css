@@ -4,6 +4,46 @@ body,
   height: 100%;
 }
 
+/* 
+主题色取自 2014 Material Design 调色板
+https://mui.com/zh/customization/color/#color-palette
+
+blueGrey
+50    #eceff1
+100   #cfd8dc
+200   #b0bec5
+300   #90a4ae
+400   #78909c
+500   #607d8b
+600   #546e7a
+700   #455a64
+800   #37474f
+900   #263238
+*/
+
+/* css variables */
+html {
+  /* global */
+  --global-background: #eceff1; /* blueGrey 50 */
+  --global-scrollbar-thumb-color: #37474f; /* blueGrey 800 */
+
+  /* menubar */
+  --menu-bar-font-color: #000;
+  --menu-bar-hover-background: #ddd;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    /* global */
+    --global-background: #546e7a; /* blueGrey 600 */
+
+    /* menubar */
+    --menu-bar-font-color: #fff;
+    --menu-bar-hover-background: #455a64; /* #blueGrey 700 */
+  }
+}
+
 body {
-  background: #f2f2f2;
+  background: var(--global-background);
+  color: #fff;
 }

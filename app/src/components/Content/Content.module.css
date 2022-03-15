@@ -4,6 +4,17 @@
   overflow-y: auto;
 }
 
+.Content::-webkit-scrollbar {
+  width: 4px;
+  height: 40px;
+  background: transparent;
+}
+
+.Content::-webkit-scrollbar-thumb {
+  background: var(--global-scrollbar-thumb-color);
+  border-radius: 4px;
+}
+
 .Scroller {
   display: grid;
   justify-content: space-between;
@@ -23,7 +34,7 @@
 
 .Link.Active,
 .Link:hover {
-  background: rgba(200, 200, 200, 0.3);
+  background: rgba(224, 224, 224, 0.3);
 }
 
 .Icon {

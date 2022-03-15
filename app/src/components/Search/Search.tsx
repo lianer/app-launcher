@@ -9,28 +9,29 @@ import { useEffect } from 'react';
 
 export const Search: React.FC = observer(function () {
   // 输入框显隐状态
-  const [open, toggleOpen] = useState(false);
+  // const [open, toggleOpen] = useState(false);
+
+  // 控制焦点状态
+  const [active, toggleActive] = useState(false);
 
   const inputRef = useRef<HTMLInputElement | null>(null);
 
   // 当输入框显示的时候自动获得焦点
-  useEffect(() => {
-    if (open) {
-      inputRef.current?.querySelector('input')!.focus();
-    }
-  }, [open]);
+  // useEffect(() => {
+  //   if (open) {
+  //     inputRef.current?.querySelector('input')!.focus();
+  //   }
+  // }, [open]);
 
-  // 点击搜索按钮显示输入框，并使输入框获得焦点
-  const handleClick = () => {
-    toggleOpen(true);
+  // 点击使输入框获得焦点
+  const focus = () => {
+    toggleActive(true);
     inputRef.current?.querySelector('input')!.focus();
   };
 
   // 当输入框失去焦点，并且没有搜索内容的时候，隐藏输入框
-  const handleBlur = (ev: any) => {
-    if (filter.keywords.trim() === '') {
-      toggleOpen(false);
-    }
+  const blur = () => {
+    toggleActive(false);
   };
 
   // 当输入框内容发生变化的时候，更新搜索内容
@@ -39,25 +40,18 @@ export const Search: React.FC = observer(function () {
   };
 
   return (
-    <Box className={s.Search}>
-      <IconButton
-        className={classnames(s.Button, open && s.Active)}
-        onClick={() => handleClick()}
-      >
+    <Box className={classnames(s.Search, active && s.Active)} onClick={focus}>
+      <IconButton className={s.Button}>
         <SearchIcon fontSize="small" />
       </IconButton>
-      {open ? (
-        <Input
-          ref={inputRef}
-          placeholder="Search..."
-          className={classnames(
-            s.Input,
-            (open || filter.keywords.trim() !== '') && s.Active
-          )}
-          onBlur={handleBlur}
-          onChange={handleInput}
-        />
-      ) : null}
+      <Input
+        ref={inputRef}
+        placeholder="Search..."
+        disableUnderline={true}
+        className={s.Input}
+        onBlur={blur}
+        onChange={handleInput}
+      />
     </Box>
   );
 });

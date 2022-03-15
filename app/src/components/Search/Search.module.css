@@ -3,18 +3,29 @@
   position: relative;
   width: 36px;
   margin-left: 20px;
+  opacity: 0.5;
 }
 
-.Button:hover svg,
-.Button.Active svg {
-  color: #333;
+.Search:hover,
+.Search.Active {
+  opacity: 1;
+}
+
+.Button svg {
+  color: var(--menu-bar-font-color);
 }
 
 .Input {
   position: absolute !important;
-  width: 200px;
-  /* visibility: hidden; */
+  width: 10ch;
+  left: 36px;
+  top: 2px;
 }
+
+.Input input {
+  color: var(--menu-bar-font-color);
+}
+
 .Input.Active {
   /* visibility: visible; */
 }

@@ -1,7 +1,4 @@
 .MenuBar {
-  --MenuBarFontSize: 14px;
-  --MenuBarHoverBackground: #ddd;
-
   display: flex;
   flex-direction: row;
   align-items: center;

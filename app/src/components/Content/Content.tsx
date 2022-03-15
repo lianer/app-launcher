@@ -20,6 +20,7 @@ export const Content: React.FC = observer(() => {
   const titleFontSize = titleHeight * (3 / 8); // 字体大小为标题高度的 3/8，在图标为 64px 的情况下，刚好获得 12px 的字号
 
   // filter
+  // TODO: 解决输入 dd 返回了只包含一个 d 的 Link
   let links =
     settings.groups.find((group) => group.id === settings.activatedGroupId)
       ?.links || [];
