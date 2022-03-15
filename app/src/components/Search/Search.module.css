@@ -26,6 +26,4 @@
   color: var(--menu-bar-font-color);
 }
 
-.Input.Active {
-  /* visibility: visible; */
-}
+/* .Input.Active {} */

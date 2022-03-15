@@ -3,7 +3,6 @@ import {
   IconButton,
   Menu,
   MenuItem,
-  Box,
   Slider,
   ListItemIcon,
   Typography,
@@ -13,7 +12,6 @@ import {
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import SettingsIcon from '@mui/icons-material/Settings';
 import CropFreeIcon from '@mui/icons-material/CropFree';
-import CropOriginalIcon from '@mui/icons-material/CropOriginal';
 import AppsIcon from '@mui/icons-material/Apps';
 import ViewListIcon from '@mui/icons-material/ViewList';
 import s from './More.module.css';

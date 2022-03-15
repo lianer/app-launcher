@@ -5,23 +5,12 @@ import SearchIcon from '@mui/icons-material/Search';
 import s from './Search.module.css';
 import { filter } from '../../state/Filter';
 import { observer } from 'mobx-react';
-import { useEffect } from 'react';
 
 export const Search: React.FC = observer(function () {
-  // 输入框显隐状态
-  // const [open, toggleOpen] = useState(false);
-
   // 控制焦点状态
   const [active, toggleActive] = useState(false);
 
   const inputRef = useRef<HTMLInputElement | null>(null);
-
-  // 当输入框显示的时候自动获得焦点
-  // useEffect(() => {
-  //   if (open) {
-  //     inputRef.current?.querySelector('input')!.focus();
-  //   }
-  // }, [open]);
 
   // 点击使输入框获得焦点
   const focus = () => {
