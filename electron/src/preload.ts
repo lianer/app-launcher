@@ -3,7 +3,7 @@ import fs from 'fs';
 import path from 'path';
 import util from 'util';
 import child_process from 'child_process';
-import electron from 'electron';
+import electron, { ipcRenderer } from 'electron';
 import { generateLink } from './utils/generate-link';
 import _ from 'lodash';
 import pkg from '../package.json';
@@ -68,3 +68,9 @@ const expose: ElectronExpose = {
 };
 
 electron.contextBridge.exposeInMainWorld('electron', expose);
+
+ipcRenderer.on('ping', () => {
+  console.log(1);
+});
+
+export {};
