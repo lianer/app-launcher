@@ -29,3 +29,11 @@ npm run dev
 13. Create React App <https://create-react-app.dev/>
 14. RollUp <https://rollupjs.org/guide/zh/>
 15. RollUp Plugins <https://github.com/rollup/plugins>
+
+## Electron 文档
+
+1. contents.send Main 向 Render 通信 <https://www.electronjs.org/zh/docs/latest/api/web-contents#contentssendchannel-args>
+2. ipcMain <https://www.electronjs.org/zh/docs/latest/api/ipc-main>
+3. 上下文隔离和 preload.js exposeInMainWorld <https://www.electronjs.org/zh/docs/latest/tutorial/context-isolation>
+4. 全局快捷键 globalShortcut <https://www.electronjs.org/zh/docs/latest/api/global-shortcut>
+5. BrowserWindow 窗口相关事件、属性、方法 <https://www.electronjs.org/zh/docs/latest/api/browser-window#winshowinactive>
