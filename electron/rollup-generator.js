@@ -1,5 +1,5 @@
+import path from 'path';
 import commonjs from '@rollup/plugin-commonjs';
-import nodeResolve from '@rollup/plugin-node-resolve';
 import typescript from '@rollup/plugin-typescript';
 import json from '@rollup/plugin-json';
 import babel from '@rollup/plugin-babel';
@@ -11,18 +11,23 @@ import babel from '@rollup/plugin-babel';
 // 4. 必须配置 tsconfig.json module: esnext
 // 5. 必须配置 tsconfig.json moduleResolution: "node"
 
-export default {
-  input: 'src/preload.ts',
-  output: {
-    file: 'dist/preload.js',
-    format: 'cjs',
-    sourcemap: true,
-  },
-  plugins: [
-    commonjs(),
-    // nodeResolve(),
-    typescript(),
-    json(),
-    babel({ babelHelpers: 'bundled' }),
-  ],
+/**
+ * @param {string} input './src/main.ts'
+ */
+export default ({ input }) => {
+  const filename = path.basename(input).slice(0, -path.extname(input).length); // main
+  return {
+    input,
+    output: {
+      file: `dist/${filename}.js`,
+      format: 'cjs',
+      sourcemap: true,
+    },
+    plugins: [
+      commonjs(),
+      typescript(),
+      json(),
+      babel({ babelHelpers: 'bundled' }),
+    ],
+  };
 };
