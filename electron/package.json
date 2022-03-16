@@ -41,6 +41,7 @@
   "dependencies": {
     "glob": "^7.2.0",
     "lodash": "^4.17.21",
+    "png2icons": "^2.0.1",
     "xml2js": "^0.4.23"
   }
 }
