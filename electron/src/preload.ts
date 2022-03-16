@@ -4,7 +4,7 @@ import path from 'path';
 import util from 'util';
 import child_process from 'child_process';
 import electron, { ipcRenderer } from 'electron';
-import { generateLink } from './utils/generate-link';
+import { generateLink } from './generate-link';
 import _ from 'lodash';
 import pkg from '../package.json';
 
