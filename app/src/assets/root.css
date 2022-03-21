@@ -24,6 +24,7 @@ blueGrey
 /* css variables */
 html {
   /* global */
+  --global-font-color: #111;
   --global-background: #eceff1; /* blueGrey 50 */
   --global-scrollbar-thumb-color: #37474f; /* blueGrey 800 */
 
@@ -32,18 +33,20 @@ html {
   --menu-bar-hover-background: #ddd;
 }
 
+body {
+  color: var(--global-font-color);
+  background: var(--global-background);
+  transition: color 0.3s linear, background 0.3s linear;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     /* global */
+    --global-font-color: #fff;
     --global-background: #546e7a; /* blueGrey 600 */
 
     /* menubar */
     --menu-bar-font-color: #fff;
     --menu-bar-hover-background: #455a64; /* #blueGrey 700 */
   }
-}
-
-body {
-  background: var(--global-background);
-  color: #fff;
 }
