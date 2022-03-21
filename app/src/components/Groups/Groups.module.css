@@ -17,6 +17,10 @@
   color: var(--menu-bar-font-color);
 }
 
+.Group:focus-visible {
+  outline: var(--menu-bar-font-color) solid 1px;
+}
+
 .Group.Active,
 .Group:hover {
   background: var(--menu-bar-hover-background);

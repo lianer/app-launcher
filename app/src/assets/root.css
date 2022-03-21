@@ -29,7 +29,7 @@ html {
   --global-scrollbar-thumb-color: #37474f; /* blueGrey 800 */
 
   /* menubar */
-  --menu-bar-font-color: #000;
+  --menu-bar-font-color: #111;
   --menu-bar-hover-background: #ddd;
 }
 
