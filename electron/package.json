@@ -4,7 +4,7 @@
   "description": "",
   "main": "dist/main.js",
   "scripts": {
-    "dev": "npm-run-all -l clean build:main build:preload -p dev:*",
+    "dev": "npm-run-all -l clean -p build:main build:preload -p dev:*",
     "dev:main": "rollup -w -c rollup.main.config.js",
     "dev:preload": "rollup -w -c rollup.preload.config.js",
     "dev:electron": "cross-env ELECTRON_DISABLE_SECURITY_WARNINGS=true electron .",
