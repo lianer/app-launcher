@@ -1,5 +1,5 @@
 import path from 'path';
-import { app, BrowserWindow, globalShortcut, nativeTheme } from 'electron';
+import { app, BrowserWindow, globalShortcut } from 'electron';
 import { setKey } from './global-shortcut-key';
 
 function createWindow() {
@@ -11,8 +11,6 @@ function createWindow() {
       preload: path.resolve(__dirname, '../dist/preload.js'),
     },
   });
-
-  nativeTheme.themeSource = 'dark';
 
   win.webContents.openDevTools();
 

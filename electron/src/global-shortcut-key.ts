@@ -14,14 +14,13 @@ export const setKey = function (win: BrowserWindow, keyMap: KeyMap) {
       switch (fn) {
         case Fns.ShowOrHideMainWindow:
           globalShortcut.register(keyMap[Fns.ShowOrHideMainWindow], () => {
-            console.log(`key ${Fns.ShowOrHideMainWindow} is pressed`);
             if (win.isVisible()) {
               win.hide();
             } else {
               win.show();
             }
             // win.webContents.on('did-finish-load', () => {
-            win.webContents.send('ping', 'whoooooooh!');
+            //   win.webContents.send('ping', 'whoooooooh!');
             // });
           });
       }
