@@ -1,12 +1,18 @@
 import path from 'path';
-import { app, BrowserWindow, globalShortcut } from 'electron';
+import { app, BrowserWindow, globalShortcut, Tray } from 'electron';
 import { setKey } from './global-shortcut-key';
+
+const icons = {
+  app: path.resolve(__dirname, '../../assets/icon', 'app-launcher-256.ico'),
+  dock: path.resolve(__dirname, '../../assets/icon', 'app-launcher-256.png'),
+};
 
 function createWindow() {
   const win = new BrowserWindow({
     width: 800,
     height: 600,
     frame: false,
+    icon: icons.app,
     webPreferences: {
       preload: path.resolve(__dirname, '../dist/preload.js'),
     },
@@ -20,6 +26,8 @@ function createWindow() {
 }
 
 app.whenReady().then(() => {
+  app.dock.setIcon(icons.dock);
+
   const win = createWindow();
 
   // 全局快捷键
