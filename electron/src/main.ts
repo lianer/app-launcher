@@ -1,6 +1,7 @@
 import path from 'path';
 import { app, BrowserWindow, globalShortcut, Tray } from 'electron';
 import { setKey } from './global-shortcut-key';
+import { setDarkMode } from './dark-mode';
 
 const icons = {
   app: path.resolve(__dirname, '../../assets/icon', 'app-launcher-256.ico'),
@@ -27,6 +28,8 @@ function createWindow() {
 
 app.whenReady().then(() => {
   app.dock.setIcon(icons.dock);
+
+  setDarkMode();
 
   const win = createWindow();
 
