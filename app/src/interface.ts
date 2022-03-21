@@ -14,6 +14,8 @@ export type ElectronExpose = {
     },
     callback: (data: DataRaw) => void
   ): void;
+
+  setDarkMode(payload: { dark: 'system' | 'light' | 'dark' }): void;
 };
 
 export type DataRaw = {

@@ -8,6 +8,9 @@ import { generateLink } from './generate-link';
 import _ from 'lodash';
 import pkg from '../package.json';
 
+// 只有在 preload.js 中才可以同时访问 Node.js API 和 Browser API
+// 将 ipcRenderer 完全暴露给渲染进程（这不安全，比如渲染进程打开不受信任的站点后，可以随意调用所有 API，或者发起 xss 攻击）
+
 const exec = util.promisify(child_process.exec);
 const writeFile = util.promisify(fs.writeFile);
 
@@ -23,17 +26,18 @@ const readData = async (): Promise<DataRaw> => {
   return JSON.parse(json) as DataRaw;
 };
 
-// 只有在 preload.js 中才可以同时访问 Node.js API 和 Browser API
-// 将 ipcRenderer 完全暴露给渲染进程（这不安全，比如渲染进程打开不受信任的站点后，可以随意调用所有 API，或者发起 xss 攻击）
-
 const expose: ElectronExpose = {
-  version: pkg.version, // electron pkg.version
+  // electron.version
+  version: pkg.version,
 
+  // 读取数据存储
   readData: readData,
 
+  // 写入数据存储
   writeData: writeData,
 
-  openLink: async (dest: string) => {
+  // 打开 Link
+  async openLink(dest) {
     try {
       await exec(`open -a "${dest}"`);
     } catch (e) {
@@ -41,10 +45,8 @@ const expose: ElectronExpose = {
     }
   },
 
-  generateLinks: async (
-    payload: { activatedGroupId: number; dests: string[] },
-    callback: (data: DataRaw) => void
-  ) => {
+  // 生成 Links
+  async generateLinks(payload, callback) {
     const newLinks = (
       await Promise.all(payload.dests.map((dest) => generateLink(dest)))
     ).filter((link): link is Link => !!link);
@@ -65,12 +67,13 @@ const expose: ElectronExpose = {
 
     callback(data);
   },
+
+  // 设置暗黑模式
+  async setDarkMode({ dark }) {
+    ipcRenderer.send('set-dark-mode', { dark });
+  },
 };
 
 electron.contextBridge.exposeInMainWorld('electron', expose);
-
-ipcRenderer.on('ping', () => {
-  console.log(1);
-});
 
 export {};

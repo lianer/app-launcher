@@ -12,8 +12,12 @@ import {
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import SettingsIcon from '@mui/icons-material/Settings';
 import CropFreeIcon from '@mui/icons-material/CropFree';
+import LightModeIcon from '@mui/icons-material/LightMode';
+import SettingsBrightnessIcon from '@mui/icons-material/SettingsBrightness';
 import AppsIcon from '@mui/icons-material/Apps';
 import ViewListIcon from '@mui/icons-material/ViewList';
+import ModeNightIcon from '@mui/icons-material/ModeNight';
+import Brightness4Icon from '@mui/icons-material/Brightness4';
 import s from './More.module.css';
 import { observer } from 'mobx-react';
 import { settings } from '../../state/Settings';
@@ -25,24 +29,28 @@ export const More: React.FC = observer(() => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
 
-  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+  const showMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
 
-  const handleClose = () => {
+  const closeMenu = () => {
     setAnchorEl(null);
   };
 
+  // const setDarkMode = (dark: 'system' | 'light' | 'dark') => {
+  //   window.electron?.setDarkMode({ dark });
+  // };
+
   return (
     <div className={classNames(s.More, open && s.Active)}>
-      <IconButton onClick={handleClick}>
+      <IconButton onClick={showMenu}>
         <MoreVertIcon fontSize="small" />
       </IconButton>
 
       <Menu
         anchorEl={anchorEl}
         open={open}
-        onClose={handleClose}
+        onClose={closeMenu}
         PaperProps={{
           style: {
             maxHeight: ITEM_HEIGHT * 4.5,
@@ -50,20 +58,33 @@ export const More: React.FC = observer(() => {
           },
         }}
       >
+        {/* 
         <MenuItem disableRipple>
           <ListItemIcon>
-            <IconButton>
-              <AppsIcon fontSize="small" />
+            <IconButton
+              className={s.System}
+              onClick={() => setDarkMode('system')}
+            >
+              <Brightness4Icon fontSize="small" />
             </IconButton>
           </ListItemIcon>
           <ListItemIcon>
-            <IconButton>
-              <ViewListIcon fontSize="small" />
+            <IconButton
+              className={s.Light}
+              onClick={() => setDarkMode('light')}
+            >
+              <LightModeIcon fontSize="small" />
+            </IconButton>
+          </ListItemIcon>
+          <ListItemIcon>
+            <IconButton className={s.Dark} onClick={() => setDarkMode('dark')}>
+              <ModeNightIcon fontSize="small" />
             </IconButton>
           </ListItemIcon>
         </MenuItem>
 
         <Divider />
+        */}
 
         <MenuItem>
           <ListItemIcon>

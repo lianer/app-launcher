@@ -11,3 +11,15 @@
 .More.Active {
   opacity: 1;
 }
+
+/* @media (prefers-color-scheme: light) {
+  .Light svg {
+    color: #2196f3;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .Dark svg {
+    color: #2196f3;
+  }
+} */
