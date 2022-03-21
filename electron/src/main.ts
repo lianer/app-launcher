@@ -6,7 +6,7 @@ function createWindow() {
   const win = new BrowserWindow({
     width: 800,
     height: 600,
-    titleBarStyle: 'customButtonsOnHover',
+    frame: false,
     webPreferences: {
       preload: path.resolve(__dirname, '../dist/preload.js'),
     },
