@@ -82,9 +82,15 @@ export const Groups: React.FC = observer(function () {
     }
   }, [editing?.id]);
 
+  // 激活指定的 group
+  const activeGroup = (group: Group) => {
+    settings.activeGroup(group.id);
+  };
+
   // 新增 group，自动进入编辑状态
   const onAddGroup = (group: Group) => {
     setEditing(group);
+    activeGroup(group);
   };
 
   // 编辑模式下，监听按键输入
@@ -151,7 +157,7 @@ export const Groups: React.FC = observer(function () {
           ref={editing?.id === group.id ? inputEl : null}
           suppressContentEditableWarning={true}
           contentEditable={editing?.id === group.id}
-          onClick={() => settings.activeGroup(group.id)}
+          onClick={() => activeGroup(group)}
           onKeyDown={onKeyDown}
           onBlur={onBlur}
           onContextMenu={(e) => onContextMenu(e, group)}
