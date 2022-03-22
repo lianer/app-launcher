@@ -1,5 +1,5 @@
 import { settings } from './state/Settings';
-import { DataRaw } from './interface';
+import { DataRaw } from './types/interface';
 
 const importData = async () => {
   if (window.electron) {

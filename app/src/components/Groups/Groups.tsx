@@ -4,7 +4,7 @@ import s from './Groups.module.css';
 import classnames from 'classnames';
 import AddIcon from '@mui/icons-material/Add';
 import { IconButton, Menu, MenuItem, Box } from '@mui/material';
-import { Group } from '../../interface';
+import { Group } from '../../types/interface';
 import { useEffect, useRef, useState } from 'react';
 
 enum MenuType {

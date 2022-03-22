@@ -1,4 +1,4 @@
-import { DataRaw } from './interface';
+import { DataRaw } from './types/interface';
 import { settings } from './state/Settings';
 
 document.addEventListener('drop', (e: DragEvent) => {

@@ -2,7 +2,7 @@ import { Box, Menu, MenuItem } from '@mui/material';
 import classNames from 'classnames';
 import { observer } from 'mobx-react';
 import React from 'react';
-import { Link } from '../../interface';
+import { Link } from '../../types/interface';
 import { filter } from '../../state/Filter';
 import { settings } from '../../state/Settings';
 import s from './Content.module.css';

@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import { makeAutoObservable } from 'mobx';
 import { deepObserve } from 'mobx-utils';
-import { Group, DataRaw, SettingsPrototype } from '../interface';
+import { Group, DataRaw, SettingsPrototype } from '../types/interface';
 
 class Settings implements DataRaw, SettingsPrototype {
   constructor() {
