@@ -3,7 +3,7 @@ import { settings } from '../../state/Settings';
 import s from './Groups.module.css';
 import classnames from 'classnames';
 import AddIcon from '@mui/icons-material/Add';
-import { IconButton, Menu, MenuItem } from '@mui/material';
+import { IconButton, Menu, MenuItem, Box } from '@mui/material';
 import { Group } from '../../interface';
 import { useEffect, useRef, useState } from 'react';
 
@@ -38,11 +38,11 @@ const AddGroupBtton: React.FC<{
   };
 
   return (
-    <div className={s.AddGroupButton}>
+    <Box className={s.AddGroupButton}>
       <IconButton onClick={handleClick}>
         <AddIcon fontSize="small"></AddIcon>
       </IconButton>
-    </div>
+    </Box>
   );
 };
 
@@ -146,9 +146,9 @@ export const Groups: React.FC = observer(function () {
   };
 
   return (
-    <div className={s.Groups}>
+    <Box className={s.Groups}>
       {groups.map((group) => (
-        <div
+        <Box
           className={classnames({
             [s.Group]: true,
             [s.Active]: group.id === activatedGroupId,
@@ -163,7 +163,7 @@ export const Groups: React.FC = observer(function () {
           onContextMenu={(e) => onContextMenu(e, group)}
         >
           {group.name}
-        </div>
+        </Box>
       ))}
 
       <AddGroupBtton onAddGroup={onAddGroup} />
@@ -176,6 +176,6 @@ export const Groups: React.FC = observer(function () {
         }}
         onClose={handleClose}
       ></MenuFC>
-    </div>
+    </Box>
   );
 });
