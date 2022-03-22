@@ -1,5 +1,6 @@
 import _ from 'lodash';
 import { makeAutoObservable, reaction } from 'mobx';
+import { deepObserve } from 'mobx-utils';
 import { Group, DataRaw, SettingsPrototype } from '../interface';
 
 class Settings implements DataRaw, SettingsPrototype {
@@ -90,19 +91,11 @@ class Settings implements DataRaw, SettingsPrototype {
 export const settings = new Settings();
 
 // 监听变化，同步写入文件
-reaction(
-  () => {
-    return {
-      iconSize: settings.iconSize,
-      _activatedGroupId: settings.activatedGroupId,
-      groups: settings.groups,
-      // links: settings.groups[0]?.links,
-    };
-  },
-  (data) => {
-    console.log('The data has changed', data);
-  }
-);
+deepObserve(settings, (change, path) => {
+  const dataKeys = ['iconSize', '_activatedGroupId', 'groups'];
+  console.log('The data has changed', _.pick(settings, dataKeys));
+  console.log('Data is not written');
+});
 
 // debug
-(window as any).settings = settings;
+window.settings = settings;

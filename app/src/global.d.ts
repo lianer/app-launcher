@@ -5,6 +5,7 @@ import { ElectronExpose } from './interface';
 declare global {
   interface Window {
     electron?: ElectronExpose;
+    settings: DataRaw & SettingsPrototype;
   }
 
   interface File {
