@@ -1,14 +1,17 @@
 import { Box, Menu, MenuItem } from '@mui/material';
 import classNames from 'classnames';
 import { observer } from 'mobx-react';
-import React from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
 import { Link } from '../../types/interface';
 import { filter } from '../../state/Filter';
-import { settings } from '../../state/Settings';
 import s from './Content.module.css';
+import { SettingsContext } from '../../context/root-context';
 
 // React.FC 扩展了 children 属性
-export const Content: React.FC = observer(() => {
+export const Content = observer<React.FC>(() => {
+  const settings = useContext(SettingsContext);
+  const contentRef = useRef<HTMLDivElement>(null);
+
   const size = settings.iconSize;
 
   const marginLR = size / 10;
@@ -18,6 +21,11 @@ export const Content: React.FC = observer(() => {
 
   const titleHeight = size / 2;
   const titleFontSize = titleHeight * (3 / 8); // 字体大小为标题高度的 3/8，在图标为 64px 的情况下，刚好获得 12px 的字号
+
+  // 当 group 切换时滚动到顶部
+  useEffect(() => {
+    contentRef.current?.scrollTo(0, 0);
+  }, [settings.activatedGroupId]);
 
   // filter
   // TODO: 解决输入 dd 返回了只包含一个 d 的 Link
@@ -41,11 +49,11 @@ export const Content: React.FC = observer(() => {
     });
   }
 
-  // 右键图标
+  // 右键菜单
   const [contextMenu, setContextMenu] = React.useState<{
     link: Link;
-    mouseX: number;
-    mouseY: number;
+    left: number;
+    top: number;
   } | null>(null);
 
   const onContextMenu = (
@@ -54,14 +62,9 @@ export const Content: React.FC = observer(() => {
   ) => {
     event.preventDefault();
     setContextMenu(
-      contextMenu
-        ? null
-        : { link, mouseX: event.clientX, mouseY: event.clientY }
+      contextMenu ? null : { link, left: event.clientX, top: event.clientY }
     );
   };
-
-  // console.log(links[0]);
-  // (window as any).temp1 = links[0]
 
   const openLink = (link: Link) => {
     window.electron?.openLink(link.dest);
@@ -93,7 +96,7 @@ export const Content: React.FC = observer(() => {
   };
 
   return (
-    <Box className={s.Content}>
+    <Box className={s.Content} ref={contentRef}>
       <Box
         className={s.Scroller}
         style={{
@@ -146,18 +149,15 @@ export const Content: React.FC = observer(() => {
           </Box>
         ))}
       </Box>
+
       <Menu
         open={contextMenu !== null}
         onClose={() => handleClose()}
         anchorReference="anchorPosition"
-        anchorPosition={
-          contextMenu !== null
-            ? {
-                left: contextMenu.mouseX,
-                top: contextMenu.mouseY,
-              }
-            : undefined
-        }
+        anchorPosition={{
+          left: contextMenu?.left ?? 0,
+          top: contextMenu?.top ?? 0,
+        }}
       >
         <MenuItem onClick={() => handleClose(CloseType.open)}>打开</MenuItem>
         <MenuItem onClick={() => handleClose(CloseType.remove)}>删除</MenuItem>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {
   IconButton,
   Menu,
@@ -20,12 +20,13 @@ import ModeNightIcon from '@mui/icons-material/ModeNight';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import s from './More.module.css';
 import { observer } from 'mobx-react';
-import { settings } from '../../state/Settings';
 import classNames from 'classnames';
+import { SettingsContext } from '../../context/root-context';
 
 const ITEM_HEIGHT = 80;
 
 export const More: React.FC = observer(() => {
+  const settings = useContext(SettingsContext);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
 
