@@ -93,7 +93,7 @@ export const settings = new Settings();
 
 // 监听变化，同步写入文件
 deepObserve(settings, (change, path) => {
-  const dataKeys = ['iconSize', '_activatedGroupId', 'groups'];
+  // const dataKeys = ['iconSize', '_activatedGroupId', 'groups'];
   // console.log('The data has changed', _.pick(settings, dataKeys));
   // console.log('Data is not written');
 });
