@@ -19,6 +19,7 @@ export type ElectronExpose = {
 };
 
 export type DataRaw = {
+  version: string;
   iconSize: number;
   _activatedGroupId: number;
   groups: Group[];
