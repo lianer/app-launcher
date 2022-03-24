@@ -7,6 +7,8 @@ import { Group } from '../../types/interface';
 import { useEffect, useRef, useState } from 'react';
 import { settings } from '../../state/Settings';
 
+// TODO [ ] 拖拽 group 以调整排序
+
 enum MenuType {
   'rename',
   'remove',

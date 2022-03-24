@@ -9,6 +9,9 @@ import MoveUpIcon from '@mui/icons-material/MoveUp';
 import { computeStyle } from './compute-style';
 import { settings } from '../../state/Settings';
 
+// TODO [ ] 解决输入 dd 返回了只包含一个 d 的 Link
+// TODO [ ] 启动无效的 link 时给个友好的提示，并建议删除
+
 const EmptyFC: React.FC = function () {
   return (
     <div>
@@ -33,7 +36,6 @@ export const Content = observer<React.FC>(() => {
   }, [settings.activatedGroupId]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // filter
-  // TODO: 解决输入 dd 返回了只包含一个 d 的 Link
   let links =
     settings.groups.find((group) => group.id === settings.activatedGroupId)
       ?.links || [];

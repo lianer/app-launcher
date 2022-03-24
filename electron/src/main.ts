@@ -3,6 +3,9 @@ import { app, BrowserWindow, globalShortcut, Tray } from 'electron';
 import { setKey } from './global-shortcut-key';
 import { setDarkMode } from './dark-mode';
 
+// TODO [ ] 新增设置窗口，设置更新时发送 updateSettings 消息
+// TODO [ ] StatusBar Icon
+
 const icons = {
   app: path.resolve(__dirname, '../../assets/icon', 'app-launcher-256.ico'),
   dock: path.resolve(__dirname, '../../assets/icon', 'app-launcher-256.png'),

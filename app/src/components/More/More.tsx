@@ -23,6 +23,8 @@ import { observer } from 'mobx-react';
 import classNames from 'classnames';
 import { settings } from '../../state/Settings';
 
+// TODO [ ] 新增设置窗口，并将 DarkMode 切换等功能迁移至设置窗口
+
 const ITEM_HEIGHT = 80;
 
 export const More: React.FC = observer(() => {
