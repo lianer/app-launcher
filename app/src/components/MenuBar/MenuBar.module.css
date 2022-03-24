@@ -1,10 +1,18 @@
 .MenuBar {
+  position: relative;
   display: flex;
   flex-direction: row;
   align-items: center;
   height: 40px;
   padding: 20px 0;
   user-select: none;
+}
 
+.DragableBar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  height: 20px;
   -webkit-app-region: drag; /* 支持 electron 无边框窗口拖拽 */
 }
