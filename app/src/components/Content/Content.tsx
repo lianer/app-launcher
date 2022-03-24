@@ -1,31 +1,36 @@
 import { Box, Menu, MenuItem } from '@mui/material';
 import classNames from 'classnames';
 import { observer } from 'mobx-react';
-import React, { useContext, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Link } from '../../types/interface';
 import { filter } from '../../state/Filter';
 import s from './Content.module.css';
-import { SettingsContext } from '../../context/root-context';
+import MoveUpIcon from '@mui/icons-material/MoveUp';
+import { computeStyle } from './compute-style';
+import { settings } from '../../state/Settings';
+
+const EmptyFC: React.FC = function () {
+  return (
+    <div>
+      <MoveUpIcon />
+      <p>将应用拖拽到此处以添加项目</p>
+    </div>
+  );
+};
 
 // React.FC 扩展了 children 属性
 export const Content = observer<React.FC>(() => {
-  const settings = useContext(SettingsContext);
   const contentRef = useRef<HTMLDivElement>(null);
 
-  const size = settings.iconSize;
-
-  const marginLR = size / 10;
-  const marginTB = size / 10;
-  const paddingLR = size / 3;
-  const paddingTB = size / 5;
-
-  const titleHeight = size / 2;
-  const titleFontSize = titleHeight * (3 / 8); // 字体大小为标题高度的 3/8，在图标为 64px 的情况下，刚好获得 12px 的字号
+  // dom 结构: Content > Scroller > Link > Icon + Title
+  const { scrollerStyle, linkStyle, iconStyle, titleStyle } = computeStyle(
+    settings.iconSize
+  );
 
   // 当 group 切换时滚动到顶部
   useEffect(() => {
     contentRef.current?.scrollTo(0, 0);
-  }, [settings.activatedGroupId]);
+  }, [settings.activatedGroupId]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // filter
   // TODO: 解决输入 dd 返回了只包含一个 d 的 Link
@@ -97,58 +102,36 @@ export const Content = observer<React.FC>(() => {
 
   return (
     <Box className={s.Content} ref={contentRef}>
-      <Box
-        className={s.Scroller}
-        style={{
-          gridTemplateColumns: `repeat(auto-fill, ${
-            size + marginLR * 2 + paddingLR * 2
-          }px)`,
-          gridTemplateRows: `repeat(auto-fill, ${
-            size + marginTB * 2 + paddingTB * 2 + titleHeight
-          }px)`,
-          gridColumnGap: `${marginLR}px`,
-          gridRowGap: `${marginTB}px`,
-        }}
-      >
-        {links.map((link) => (
-          <Box
-            className={classNames(s.Link, {
-              [s.Active]: contextMenu !== null && link === contextMenu.link, // 右键菜单弹出的时候，继续保持 hover 效果
-            })}
-            key={link.name}
-            style={{
-              width: size + paddingLR * 2, // padding-left/padding-right 集成到 width 中
-              height: size + titleHeight,
-              paddingTop: paddingTB,
-              paddingBottom: paddingTB,
-            }}
-            onClick={() => openLink(link)}
-            onContextMenu={(event) => {
-              onContextMenu(event, link);
-            }}
-          >
+      {links.length === 0 && <EmptyFC />}
+
+      {links.length > 0 && (
+        <Box className={s.Scroller} style={scrollerStyle}>
+          {links.map((link) => (
             <Box
-              className={s.Icon}
-              style={{
-                width: size,
-                height: size,
-                backgroundImage: `url('${link.icon}')`,
-              }}
-            ></Box>
-            <Box
-              className={s.Title}
-              style={{
-                width: size + paddingLR, // 只加一个 padding，另一个 padding 留一点边距好看一些
-                height: titleHeight,
-                lineHeight: `${titleHeight}px`,
-                fontSize: titleFontSize,
+              className={classNames(s.Link, {
+                [s.Active]: link === contextMenu?.link, // 右键菜单弹出的时候，继续保持 hover 效果
+              })}
+              key={link.name}
+              style={linkStyle}
+              onClick={() => openLink(link)}
+              onContextMenu={(event) => {
+                onContextMenu(event, link);
               }}
             >
-              {link.name}
+              <Box
+                className={s.Icon}
+                style={{
+                  backgroundImage: `url('${link.icon}')`,
+                  ...iconStyle,
+                }}
+              ></Box>
+              <Box className={s.Title} style={titleStyle}>
+                {link.name}
+              </Box>
             </Box>
-          </Box>
-        ))}
-      </Box>
+          ))}
+        </Box>
+      )}
 
       <Menu
         open={contextMenu !== null}
