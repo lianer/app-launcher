@@ -4,8 +4,8 @@ import classnames from 'classnames';
 import AddIcon from '@mui/icons-material/Add';
 import { IconButton, Menu, MenuItem, Box } from '@mui/material';
 import { Group } from '../../types/interface';
-import { useContext, useEffect, useRef, useState } from 'react';
-import { SettingsContext } from '../../context/root-context';
+import { useEffect, useRef, useState } from 'react';
+import { settings } from '../../state/Settings';
 
 enum MenuType {
   'rename',
@@ -32,7 +32,6 @@ const selectNodeText = function <T extends Node = HTMLElement>(node: T): void {
 const AddGroupBtton: React.FC<{
   onAddGroup?: (addedGroup: Group) => void;
 }> = function (props) {
-  const settings = useContext(SettingsContext);
   const handleClick = () => {
     const addedGroup = settings.addGroup(defaultGroupName);
     props.onAddGroup?.(addedGroup);
@@ -66,7 +65,6 @@ const MenuFC: React.FC<{
 };
 
 export const Groups = observer<React.FC>(function () {
-  const settings = useContext(SettingsContext);
   const { activatedGroupId, groups } = settings; // 当前激活的 group
   const [editing, setEditing] = useState<null | Group>(null); // 编辑中的 group
   const inputEl = useRef<HTMLInputElement>(null); // 编辑中的 group ref

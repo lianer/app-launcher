@@ -2,8 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { App } from './layouts/App';
 import reportWebVitals from './reportWebVitals';
-import { SettingsContext } from './context/root-context';
-import { settings } from './state/Settings';
 
 // basic css
 import './assets/normalize.css';
@@ -23,9 +21,7 @@ import './drag-links';
 
 ReactDOM.render(
   <React.StrictMode>
-    <SettingsContext.Provider value={settings}>
-      <App />
-    </SettingsContext.Provider>
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );

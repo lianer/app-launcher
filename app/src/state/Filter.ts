@@ -1,15 +1,9 @@
-import { makeAutoObservable } from 'mobx';
+import { observable } from 'mobx';
 
-class Filter {
-  keywords: string = '';
-
-  constructor() {
-    makeAutoObservable(this);
-  }
-
+// 使用 makeAutoObservable observable observer 都可以定义响应式 mobx 对象
+export const filter = observable({
+  keywords: '',
   setKeywords(keywords: string) {
     this.keywords = keywords;
-  }
-}
-
-export const filter = new Filter();
+  },
+});
