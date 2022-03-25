@@ -8,6 +8,8 @@ import s from './Content.module.css';
 import MoveUpIcon from '@mui/icons-material/MoveUp';
 import { computeStyle } from './compute-style';
 import { settings } from '../../state/Settings';
+import { fuzzySearch } from './fuzzy-search';
+import _ from 'lodash';
 
 // TODO [ ] 解决输入 dd 返回了只包含一个 d 的 Link
 // TODO [ ] 启动无效的 link 时给个友好的提示，并建议删除
@@ -35,26 +37,12 @@ export const Content = observer<React.FC>(() => {
     contentRef.current?.scrollTo(0, 0);
   }, [settings.activatedGroupId]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  // filter
-  let links =
-    settings.groups.find((group) => group.id === settings.activatedGroupId)
-      ?.links || [];
-  const keywords = filter.keywords;
-  if (keywords.trim() !== '') {
-    keywords.split('').forEach((keyword) => {
-      links = links.filter((link) => {
-        // 英文不区分大小写
-        if (/[a-zA-Z]/.test(keyword)) {
-          return (
-            link.name.includes(keyword.toUpperCase()) ||
-            link.name.includes(keyword.toLowerCase())
-          );
-        }
-        // 其他字符精确匹配
-        return link.name.includes(keyword);
-      });
-    });
-  }
+  const activatedGroup = _.find(settings.groups, {
+    id: settings.activatedGroupId,
+  });
+  let links: Link[] = activatedGroup?.links ?? [];
+  // 搜索词过滤
+  links = links.filter((link) => fuzzySearch(link.name, filter.keywords));
 
   // 右键菜单
   const [contextMenu, setContextMenu] = React.useState<{

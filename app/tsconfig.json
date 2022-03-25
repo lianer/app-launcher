@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "esnext", // 指定生成的代码的兼容性
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
@@ -9,7 +9,7 @@
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
-    "module": "esnext",
+    "module": "commonjs", // 指定模块化的方案，一般选 commonjs，如果用 esnext 方案即 esmodule 规范，就会要求在 package.json 中配置 "type": "module"
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
