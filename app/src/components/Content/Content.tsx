@@ -5,7 +5,6 @@ import React, { useEffect, useRef } from 'react';
 import { Link } from '../../types/interface';
 import { filter } from '../../state/Filter';
 import s from './Content.module.css';
-import MoveUpIcon from '@mui/icons-material/MoveUp';
 import { computeStyle } from './compute-style';
 import { settings } from '../../state/Settings';
 import { fuzzySearch } from './fuzzy-search';
@@ -16,8 +15,7 @@ import _ from 'lodash';
 
 const EmptyFC: React.FC = function () {
   return (
-    <div>
-      <MoveUpIcon />
+    <div className={s.Empty}>
       <p>将应用拖拽到此处以添加项目</p>
     </div>
   );
